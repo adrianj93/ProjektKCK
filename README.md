@@ -5,14 +5,23 @@ ProjektKCK
 
  
 Spis treści
+
 •	Wstęp, o projekcie
+
 •	Zespół
+
 •	Podział zadań
+
 •	Funkcjonalność
+
 •	Projekt wstępny 
+
 •	Przykładowe funkcje
+
 •	Lista zmian
+
 •	Podsumowanie
+
  
 Wstęp, o projekcie
 Wstęp
