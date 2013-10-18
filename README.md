@@ -40,6 +40,7 @@ Traktor sam wybiera odpowiedni czas na uprawę, siew, zbiór, nawodnienie ale na
  
  
 Zespół
+
 Adrian Janiak : adrianj93
 
 Łukasz Frąckowiak: fracek144
