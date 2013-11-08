@@ -65,6 +65,11 @@ public class FrameEkranGlowny extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 238, 199));
 
         jButton1.setText("Sklep z ulepszeniami");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Stan konta:");
 
@@ -266,6 +271,10 @@ public class FrameEkranGlowny extends javax.swing.JFrame {
     private void jButtonZbioryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZbioryActionPerformed
         new FrameZbiory().setVisible(true);
     }//GEN-LAST:event_jButtonZbioryActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new FrameUlepszenia().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
