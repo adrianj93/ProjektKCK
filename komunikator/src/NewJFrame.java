@@ -1,4 +1,5 @@
 public class NewJFrame extends javax.swing.JFrame {
+   
 
     public NewJFrame() {
         initComponents();
@@ -57,14 +58,47 @@ public class NewJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    
+    
     private void response(String getText){
         
-        if(getText.equals("Jedź")){
-            jTextArea1.append("eTraktor: tak\n");
-        }else{
-            jTextArea1.append("eTraktor: nie\n");
+        String[] keyWord = new String[6];
+        keyWord[0] = "jedz";
+        keyWord[1] = "jedź";
+        keyWord[2] = "siej";
+        keyWord[3] = "zbieraj";
+        keyWord[4] = "żniwuj";
+        keyWord[5] = "podlej";
+        
+        
+        String[] tab = getText.split(" ");
+        
+        int found = 0;
+        int foundet = -1;
+        for(int i = 0; i < keyWord.length; i++){
+            for(int k = 0; k < tab.length; k++){
+            
+                if(keyWord[i].equalsIgnoreCase(tab[k])){
+                found = 1;
+                foundet = i;
+                }  
+            }
         }
-    }
+        switch(found){
+            case 1:
+                jTextArea1.append("eTraktor: Jade wykonać zadanie "+keyWord[foundet]+ "\n");
+            break;
+            case 0:
+                jTextArea1.append("eTraktor: Nie znalazłem polecenia, sformułuj je inaczej!\n");
+            break;
+        }
+        
+        
+        
+        }
+        
+        
   
     private void send(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_send
         String spole = jTextField1.getText();
