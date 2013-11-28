@@ -39,7 +39,7 @@ public class FrameEkranGlowny extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        Wyślij = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
@@ -143,7 +143,12 @@ public class FrameEkranGlowny extends javax.swing.JFrame {
             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jButton2.setText("Wyślij");
+        Wyślij.setText("Wyślij");
+        Wyślij.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                send(evt);
+            }
+        });
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Stan paliwa");
@@ -180,7 +185,7 @@ public class FrameEkranGlowny extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
+                        .addComponent(Wyślij))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,7 +222,7 @@ public class FrameEkranGlowny extends javax.swing.JFrame {
                             .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel1)
-                                .addComponent(jButton2)))
+                                .addComponent(Wyślij)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,6 +281,53 @@ public class FrameEkranGlowny extends javax.swing.JFrame {
         new FrameUlepszenia().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+     private void response(String getText){
+        
+        String[] keyWord = new String[6];
+        keyWord[0] = "jedz";
+        keyWord[1] = "jedź";
+        keyWord[2] = "siej";
+        keyWord[3] = "zbieraj";
+        keyWord[4] = "żniwuj";
+        keyWord[5] = "podlej";
+        
+        
+        String[] tab = getText.split(" ");
+        
+        int found = -1;
+        for(int i = 0; i < keyWord.length; i++){
+           
+                if(keyWord[i].equalsIgnoreCase(tab[0])){
+               
+                found= i;
+                }  
+            
+        }
+        switch(found){
+            case 0:
+                jTextArea1.append("eTraktor: Wydałeś polecenie jedź ale nie określiłeś parametrów! Gdzie mam jechać?\n");
+            break;
+            case 1:
+                jTextArea1.append("eTraktor: Wydałeś polecenie jedź ale nie określiłeś parametrów! Gdzie mam jechać?\n");
+            break;
+            default:
+                 jTextArea1.append("eTraktor: Nie znam tego polecenia, sformułuj polecenie inaczej.\n");
+            break;
+            
+        }
+        
+        
+        
+        }
+    
+    private void send(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_send
+        // TODO add your handling code here:
+        String spole = jTextField1.getText();
+        jTextArea1.append("operator: "+spole+"\n");
+        response(spole);
+    }//GEN-LAST:event_send
+
+    
     /**
      * @param args the command line arguments
      */
@@ -311,8 +363,8 @@ public class FrameEkranGlowny extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Wyślij;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonZbiory;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
