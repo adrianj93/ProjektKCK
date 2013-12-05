@@ -1,18 +1,42 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package etraktor;
+import javax.swing.text.DefaultCaret;
 
-/**
- *
- * @author Adrian
- */
+
 public class FrameEkranGlowny extends javax.swing.JFrame {
 
     /**
      * Creates new form FrameEkranGlowny
      */
+    public String getStringPogoda() {
+        String pogoda;
+        
+        switch(MechanizmCzasu.getPogoda()){
+            case 1: 
+              pogoda = "słońce";
+              jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/newpackage/weathericons/dzien.png")));
+              break;
+            case 2: 
+                pogoda = "deszcz";
+                jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/newpackage/weathericons/deszcz.png")));
+                break;
+            case 3: 
+                pogoda = "śnieg";
+                jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/newpackage/weathericons/snieg.png")));
+                break;
+            case 4: 
+                pogoda = "wiatr/mgła";
+                jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/newpackage/weathericons/chmury.png")));
+                break;
+            case 5: 
+                pogoda = "burza";
+                jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/newpackage/weathericons/burza.png")));
+                break;
+            default: pogoda = "nie pobrano";
+                break;
+        }
+        return pogoda;
+    }
+    
     public FrameEkranGlowny() {
         initComponents();
     }
@@ -116,11 +140,13 @@ public class FrameEkranGlowny extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        DefaultCaret caret = (DefaultCaret)jTextArea1.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("[02:44] Akcja 1\n[02:54] Akcja 1\n[02:55] Akcja 1\n[02:56] Akcja 1\n[02:59] Akcja 1\n[02:59] Akcja 1\n");
+        jTextArea1.setText("Jestem gotowy do pracy");
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -163,13 +189,12 @@ public class FrameEkranGlowny extends javax.swing.JFrame {
         jLabel7.setMaximumSize(new java.awt.Dimension(50, 50));
         jLabel7.setMinimumSize(new java.awt.Dimension(50, 50));
 
-        jLabel8.setText("Noc");
+        jLabel8.setText(MechanizmCzasu.GetPoraDnia());
 
-        jLabel9.setText("02:05");
+        jLabel9.setText(MechanizmCzasu.GetCzas());
 
-        jLabel10.setText("Deszcz");
+        jLabel10.setText(getStringPogoda());
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/newpackage/weathericons/snieg.png"))); // NOI18N
         jLabel11.setMaximumSize(new java.awt.Dimension(50, 50));
         jLabel11.setMinimumSize(new java.awt.Dimension(50, 50));
 
@@ -305,13 +330,13 @@ public class FrameEkranGlowny extends javax.swing.JFrame {
         }
         switch(found){
             case 0:
-                jTextArea1.append("eTraktor: Wydałeś polecenie jedź ale nie określiłeś parametrów! Gdzie mam jechać?\n");
+                jTextArea1.append(MechanizmCzasu.GetCzas() + " eTraktor: Wydałeś polecenie jedź ale nie określiłeś parametrów! Gdzie mam jechać?\n");
             break;
             case 1:
-                jTextArea1.append("eTraktor: Wydałeś polecenie jedź ale nie określiłeś parametrów! Gdzie mam jechać?\n");
+                jTextArea1.append(MechanizmCzasu.GetCzas() + " eTraktor: Wydałeś polecenie jedź ale nie określiłeś parametrów! Gdzie mam jechać?\n");
             break;
             default:
-                 jTextArea1.append("eTraktor: Nie znam tego polecenia, sformułuj polecenie inaczej.\n");
+                 jTextArea1.append(MechanizmCzasu.GetCzas() + " eTraktor: Nie znam tego polecenia, sformułuj polecenie inaczej.\n");
             break;
             
         }
@@ -321,7 +346,7 @@ public class FrameEkranGlowny extends javax.swing.JFrame {
         }
     
     private void send(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_send
-        // TODO add your handling code here:
+
         String spole = jTextField1.getText();
         jTextArea1.append("operator: "+spole+"\n");
         response(spole);

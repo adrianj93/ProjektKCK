@@ -188,9 +188,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="eTraktor - ekran ulepsze&#x144;"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="eTraktor - ekran ulepsze&#x144;"/>
-              </AccessibilityProperties>
             </Component>
           </SubComponents>
         </Container>

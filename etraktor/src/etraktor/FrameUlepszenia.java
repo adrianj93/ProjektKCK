@@ -1,13 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package etraktor;
 
-/**
- *
- * @author Adrian
- */
 public class FrameUlepszenia extends javax.swing.JFrame {
 
     /**
