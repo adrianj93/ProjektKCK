@@ -14,7 +14,7 @@ import javax.swing.Timer;
 public class GameFrame extends java.awt.Frame {
 
     DefaultListModel dlm;
-    Zasoby z = new Zasoby();
+    int zasoby;
     
 
     public String getStringPogoda() {
@@ -40,6 +40,7 @@ public class GameFrame extends java.awt.Frame {
             case 5: 
                 pogoda = "burza";
                 jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/newpackage/weathericons/burza.png")));
+                
                 break;
             default: pogoda = "nie pobrano";
                 break;
@@ -107,7 +108,6 @@ public class GameFrame extends java.awt.Frame {
         jPanel1.add(commandText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 290, 30));
 
         commandButton.setText("Wyślij");
-        commandButton.setActionCommand("Wyślij");
         commandButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 commandButtonActionPerformed(evt);
@@ -199,7 +199,7 @@ public class GameFrame extends java.awt.Frame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText(z.GetStanKontaString());
+        jLabel4.setText(Zasoby.z.GetStanKontaString());
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 57, -1));
 
         jPanel3.setBackground(jPanel1.getBackground());
@@ -209,6 +209,8 @@ public class GameFrame extends java.awt.Frame {
 
         jProgressBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jProgressBar1.setMaximumSize(new java.awt.Dimension(20, 14));
+
+        jProgressBar2.setValue(Zasoby.z.GetElektrycznosc());
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Stan paliwa");
@@ -277,6 +279,7 @@ public class GameFrame extends java.awt.Frame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         new FrameUlepszenia().setVisible(true);
+        zasoby = Zasoby.z.GetStanKonta();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

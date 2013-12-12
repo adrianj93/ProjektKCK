@@ -61,7 +61,6 @@
         <Component class="javax.swing.JButton" name="commandButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Wy&#x15b;lij"/>
-            <Property name="actionCommand" type="java.lang.String" value="Wy&#x15b;lij"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commandButtonActionPerformed"/>
@@ -271,7 +270,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="z.GetStanKontaString()" type="code"/>
+              <Connection code="Zasoby.z.GetStanKontaString()" type="code"/>
             </Property>
           </Properties>
           <Constraints>
@@ -357,6 +356,11 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JProgressBar" name="jProgressBar2">
+              <Properties>
+                <Property name="value" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Zasoby.z.GetElektrycznosc()" type="code"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>

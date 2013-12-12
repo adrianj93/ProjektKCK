@@ -248,8 +248,11 @@ public class GamePanel extends javax.swing.JPanel {
                     PoolObject po = board.GetObject(i, j, false);
                     if(po instanceof ObjectStore)
                     {           
-                         g.setColor(Color.RED);
+                        g.setColor(Color.RED);
+
+                         
                         g.fillRect(i*scaleX, j*scaleY, 30, 30);
+
                     }
                     if(po instanceof ObjectPackage)
                     {                     
