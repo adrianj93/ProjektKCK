@@ -9,10 +9,8 @@ import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-/**
- *
- * @author s384027
- */
+
+
 public class GamePanel extends javax.swing.JPanel {
     DefaultListModel dlm; 
     Interpreter interpreter;

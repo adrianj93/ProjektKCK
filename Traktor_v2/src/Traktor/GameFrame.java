@@ -16,7 +16,8 @@ public class GameFrame extends java.awt.Frame {
     DefaultListModel dlm;
     int zasoby;
     
-
+    
+    
     public String getStringPogoda() {
         String pogoda;
         
@@ -46,10 +47,11 @@ public class GameFrame extends java.awt.Frame {
                 break;
         }
         return pogoda;
-    }        
+    }
+ 
     public GameFrame() {        
         initComponents();
-        
+       
         init();
     }
 
@@ -58,8 +60,16 @@ public class GameFrame extends java.awt.Frame {
         dlm = new DefaultListModel();
         talkList.setModel(dlm);
         gamePanel.SetDLM(dlm);
+        
+    
+    
     }
   
+    private void ShowTime(){
+     Zegar zegar = new Zegar();
+    jPanel1.add(zegar);
+    zegar.start();
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -87,6 +97,7 @@ public class GameFrame extends java.awt.Frame {
         jProgressBar2 = new javax.swing.JProgressBar();
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        Time = new javax.swing.JPanel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -168,16 +179,16 @@ public class GameFrame extends java.awt.Frame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
 
         jLabel8.setText(MechanizmCzasu.GetPoraDnia());
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, -1, -1));
 
         jLabel9.setText(MechanizmCzasu.GetCzas());
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, -1, -1));
 
         jLabel10.setText(getStringPogoda());
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, -1, -1));
 
         jLabel13.setText(MechanizmCzasu.GetDzienNoc());
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, -1, -1));
 
         jButtonZbiory.setText("Zbiory");
         jButtonZbiory.addActionListener(new java.awt.event.ActionListener() {
@@ -256,6 +267,22 @@ public class GameFrame extends java.awt.Frame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 200, 90));
 
+        javax.swing.GroupLayout TimeLayout = new javax.swing.GroupLayout(Time);
+        Time.setLayout(TimeLayout);
+        TimeLayout.setHorizontalGroup(
+            TimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 130, Short.MAX_VALUE)
+        );
+        TimeLayout.setVerticalGroup(
+            TimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 130, 50));
+        Zegar zegar = new Zegar();
+        add(zegar);
+        zegar.start();
+
         add(jPanel1, java.awt.BorderLayout.NORTH);
 
         pack();
@@ -307,6 +334,8 @@ public class GameFrame extends java.awt.Frame {
             public void run() {
                 new GameFrame().setVisible(true);
                 
+                
+                
             
             }
         });
@@ -316,6 +345,7 @@ public class GameFrame extends java.awt.Frame {
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Time;
     private javax.swing.JButton commandButton;
     private javax.swing.JTextField commandText;
     private Traktor.GamePanel gamePanel;
