@@ -9,59 +9,122 @@ import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
+import java.awt.image.BufferedImage;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import java.util.HashMap;
 
 public class GamePanel extends javax.swing.JPanel {
+    
+    public static final int SZEROKOSC = 25;
+public static final int WYSOKOSC = 250;
     DefaultListModel dlm; 
     Interpreter interpreter;
     Board board;
     Agent agent;
-    
+    public BufferedImage potworek = null;
     int scaleX;
     int scaleY;
     
+    
+    
+    
+    public int pozX,pozY;
     public GamePanel()
     {
+        pozX=50;
+        pozY=380;
         initComponents();
         board = new Board(10,10);      
         setObjectsRandom();
         interpreter = new Interpreter("src\\Traktor\\keyword.txt"); 
+        sprites = new HashMap();
+        
     }
     
+    public HashMap sprites;
     public void SetDLM(DefaultListModel _dlm)
     {
         dlm = _dlm;
     }
     
+    
+    //ustawienie elementów w okienku
     private void setObjectsRandom()
     {
         Random rand = new Random();
         int x,y;
         
         agent = new Agent();
-        board.SetObject(board.getWidth()/2, board.getHeight()/2,true, agent);
+        
+        //Miejsce startu traktora
+        board.SetObject(8, 9,true, agent);
         
         int countPackage = 5;
-        
+        //hangary
         ObjectStore os1 = new ObjectStore(5);
         ObjectStore os2 = new ObjectStore(2);
-        board.SetObject(0, 0, false, os1);
-        board.SetObject(0, board.height-1, false, os2);
+        board.SetObject(board.width-4, board.height-2, false, os1);
+        board.SetObject(0, board.height-2, false, os2);
         
+        //Losowe rozmieszczone kamienie
         while((countPackage--) > 0)
         {
             ObjectPackage op = new ObjectPackage();
             
             do
             {
-                x = rand.nextInt(board.width - 1);
-                y = rand.nextInt(board.height - 1);
+                x = rand.nextInt(board.width );
+                y = rand.nextInt(board.height-2 );
             }while(board.CheckPool(x, y, false));
             
             board.SetObject(x, y, false, op);
         }
         
     }
+    
+    //Jak nie ma jakiegos obrazku to podczasz kompilowanie informuje nas o tym
+    public BufferedImage loadImage(String sciezka) {
+    URL url=null;
+try {
+url = getClass().getClassLoader().getResource(sciezka);
+return ImageIO.read(url);
+} catch (Exception e) {
+System.out.println("Przy otwieraniu " + sciezka +" jako " + url);
+System.out.println("Wystapil blad : "+e.getClass().getName()+""+e.getMessage());
+System.exit(0);
+return null;
+}
+}
+    
+   
+public BufferedImage getSprite(String sciezka) {
+BufferedImage img = (BufferedImage)sprites.get(sciezka);
+if (img == null) {
+img = loadImage(sciezka);
+sprites.put(sciezka,img);
+}
+return img;
+}    
+    
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     private Point findAgent()
     {
@@ -118,9 +181,12 @@ public class GamePanel extends javax.swing.JPanel {
 
                                         switch (argNo) {
                                             case 1: {
+                                                //p.agent to ten czarny kwadracik. Usunąłem go, ale umownie on cały czas jest
+                                                //i w jego miejscu posawiłem traktor, dzieki temu działa usuwanie
                                                 if (pAgent.x > 0) {   
                                                     isOccupied =  checkIfIsOccupied(pAgent.x-1, pAgent.y);
-                                                    pAgent.x -= 1;                                                                                                       
+                                                    pAgent.x -= 1;
+                                                    
                                                 }
                                                 else
                                                 {
@@ -161,6 +227,24 @@ public class GamePanel extends javax.swing.JPanel {
                                                 }
                                                 break;
                                             }
+                                            
+                                            
+                                             case 5: {
+                                                //kierowanie pomocnikiem
+                                                 pozX=pAgent.x*40;
+                                                 pozY=pAgent.y*40;
+                                                break;
+                                            }
+                                             
+                                             
+                                             case 6: {
+                                                //kierowanie pomocnikiem
+                                                 pozX=50;
+                                                 pozY=380;
+                                                break;
+                                            }
+                                            
+                                            
                                         }                                        
                                     }
                                 } else {    
@@ -230,32 +314,37 @@ public class GamePanel extends javax.swing.JPanel {
     
     private void drawBoard(Graphics g)
     {
+        
+        
         scaleX = getWidth() / board.width;
         scaleY = getHeight() / board.height;
         
         for(int i = 0;i < board.getWidth();i++)
             for(int j = 0;j < board.getHeight();j++)
             {
+                //tutaj laduje sie obrazek traktora, ktory jest wykrywany jako ten p.agent i pomicnik,
+                //ale on akurat mogl chyba sie ladowac w kazdym miejscu etody
                 if(board.CheckPool(i, j, true))
                 {
-                        g.setColor(Color.BLACK);
-                        g.fillRect(i*scaleX, j*scaleY, 30, 30);
+                    g.drawImage(getSprite("1.png"), i*scaleX-17, j*scaleY-17,this);
+                    
+                    g.drawImage(getSprite("2.gif"), pozX, pozY,this);
+                        
                 }
                 else if(board.CheckPool(i, j, false))
                 {
                     PoolObject po = board.GetObject(i, j, false);
                     if(po instanceof ObjectStore)
-                    {           
-                        g.setColor(Color.RED);
-
-                         
-                        g.fillRect(i*scaleX, j*scaleY, 30, 30);
+                    {     
+                        //hangar
+                         g.drawImage(getSprite("hangar.gif"), i*scaleX, j*scaleY,this);
 
                     }
                     if(po instanceof ObjectPackage)
-                    {                     
-                         g.setColor(Color.BLUE);
-                        g.fillRect(i*scaleX, j*scaleY, 30, 30);
+                    {     
+                        //kamienie
+                        g.drawImage(getSprite("kamien.gif"), i*scaleX, j*scaleY,this);
+                         
                     }
                 }
             }
@@ -274,6 +363,14 @@ public class GamePanel extends javax.swing.JPanel {
         }
         return false;
     }
+    
+    
+    
+    
+    
+    
+
+
     
     
     @SuppressWarnings("unchecked")

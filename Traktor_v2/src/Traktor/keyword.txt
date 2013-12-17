@@ -11,3 +11,5 @@ wschod;1#3
 poludnie;1#4
 podnies;2
 opusc;3
+pomoc;1#5
+wrocpomoc;1#6
