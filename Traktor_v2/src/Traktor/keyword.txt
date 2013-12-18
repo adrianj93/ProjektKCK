@@ -1,0 +1,15 @@
+idz;1
+porusz;1
+jedz;1
+lewo;1#1
+gora;1#2
+prawo;1#3
+dol;1#4
+zachod;1#1
+polnoc;1#2
+wschod;1#3
+poludnie;1#4
+podnies;2
+opusc;3
+pomoc;1#5
+wrocpomoc;1#6
