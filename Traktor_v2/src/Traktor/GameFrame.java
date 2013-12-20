@@ -61,6 +61,8 @@ public class GameFrame extends java.awt.Frame {
         talkList.setModel(dlm);
         gamePanel.SetDLM(dlm);
         dlm.addElement(Informations.FirstInfo());
+        dlm.addElement(Informations.SecondInfo());
+        dlm.addElement("================================");
         //dlm.addElement(Informations.SecondInfo());
         
     
