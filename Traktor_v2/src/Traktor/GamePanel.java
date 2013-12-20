@@ -148,7 +148,7 @@ return img;
     
     private void addTextToList(String text)
     {
-        dlm.addElement("A: " + text);
+        dlm.addElement(MechanizmCzasu.GetCzas() + " eTraktor: " + text);
     }
     
     public void Run(String text) {
@@ -186,6 +186,7 @@ return img;
                                                 if (pAgent.x > 0) {   
                                                     isOccupied =  checkIfIsOccupied(pAgent.x-1, pAgent.y);
                                                     pAgent.x -= 1;
+                                                    addTextToList("Dojechałem. Co robić?");
                                                     
                                                 }
                                                 else
