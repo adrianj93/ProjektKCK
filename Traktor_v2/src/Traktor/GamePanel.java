@@ -10,6 +10,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import java.util.HashMap;
@@ -64,8 +65,8 @@ public static final int WYSOKOSC = 250;
         //hangary
         ObjectStore os1 = new ObjectStore(5);
         ObjectStore os2 = new ObjectStore(2);
-        board.SetObject(board.width-4, board.height-2, false, os1);
-        board.SetObject(0, board.height-2, false, os2);
+        board.SetObject(board.width-1, board.height-1, false, os1);
+        board.SetObject(0, board.height-1, false, os2);
         
         //Losowe rozmieszczone kamienie
         while((countPackage--) > 0)
@@ -89,7 +90,7 @@ public static final int WYSOKOSC = 250;
 try {
 url = getClass().getClassLoader().getResource(sciezka);
 return ImageIO.read(url);
-} catch (Exception e) {
+} catch (IOException e) {
 System.out.println("Przy otwieraniu " + sciezka +" jako " + url);
 System.out.println("Wystapil blad : "+e.getClass().getName()+""+e.getMessage());
 System.exit(0);
@@ -186,12 +187,13 @@ return img;
                                                 if (pAgent.x > 0) {   
                                                     isOccupied =  checkIfIsOccupied(pAgent.x-1, pAgent.y);
                                                     pAgent.x -= 1;
-                                                    addTextToList("Dojechałem. Co robić?");
+                                                    addTextToList( "Dojechałem. Co dalej?");
                                                     
                                                 }
                                                 else
                                                 {
                                                     addTextToList(Informations.OutsideEdge);
+                                                    addTextToList( "Co dalej?");
                                                 }
                                                 break;
                                             }
@@ -199,10 +201,12 @@ return img;
                                                 if (pAgent.y > 0) {
                                                     isOccupied =  checkIfIsOccupied(pAgent.x, pAgent.y - 1);
                                                     pAgent.y -= 1;
+                                                    addTextToList( "Dojechałem. Co dalej?");
                                                 }
                                                 else
                                                 {
-                                                    addTextToList(Informations.OutsideEdge);
+                                                    addTextToList( Informations.OutsideEdge);
+                                                    addTextToList( "Co dalej?");
                                                 }
                                                 break;
                                             }
@@ -210,10 +214,12 @@ return img;
                                                 if (pAgent.x < board.width - 1) {
                                                     isOccupied =  checkIfIsOccupied(pAgent.x+1, pAgent.y);
                                                     pAgent.x += 1;
+                                                    addTextToList( "Dojechałem. Co dalej?");
                                                 }
                                                 else
                                                 {
                                                     addTextToList(Informations.OutsideEdge);
+                                                    addTextToList( "Co dalej?");
                                                 }
                                                 break;
                                             }
@@ -221,10 +227,12 @@ return img;
                                                 if (pAgent.y < board.height - 1) {
                                                     isOccupied =  checkIfIsOccupied(pAgent.x, pAgent.y + 1);
                                                     pAgent.y += 1;
+                                                    addTextToList( "Dojechałem. Co dalej?");
                                                 }
                                                 else
                                                 {
                                                     addTextToList(Informations.OutsideEdge);
+                                                    addTextToList( "Co dalej?");
                                                 }
                                                 break;
                                             }
@@ -234,6 +242,7 @@ return img;
                                                 //kierowanie pomocnikiem
                                                  pozX=pAgent.x*40;
                                                  pozY=pAgent.y*40;
+                                                 addTextToList( "Pomoc na miejscu. Co dalej?");
                                                 break;
                                             }
                                              
@@ -242,6 +251,7 @@ return img;
                                                 //kierowanie pomocnikiem
                                                  pozX=50;
                                                  pozY=380;
+                                                 addTextToList( "Pomoc wróciła. Co dalej?");
                                                 break;
                                             }
                                             
@@ -267,7 +277,7 @@ return img;
                                     }
                                     else
                                     {
-                                        addTextToList(Informations.OutsideEdge);
+                                        addTextToList( Informations.OutsideEdge);
                                     }
                                     
                                 }
@@ -285,21 +295,32 @@ return img;
                         }
                         break;
                     }
-                    case 2: //podnoszenie
+                    case 2: //oranie
                     {
-                        if (board.CheckPool(pAgent.x, pAgent.y,false))
-                        {
-                            ObjectPackage obj = (ObjectPackage)board.GetObject(pAgent.x, pAgent.y, false);
-                            agent.AddPackage(obj);
-                            board.DeleteObject(pAgent.x, pAgent.y, false);
-                        }
+                            dlm.addElement(MechanizmCzasu.GetCzas() + " eTraktor: " + "Jestem na polu" + pAgent.x + pAgent.y);
+                        
                         break;
                     }
-                    case 3: //opuszczanie
+                    case 3: //sianie
                     {                        
-                            ObjectPackage obj = agent.GetPackage();
-                            board.SetObject(pAgent.x, pAgent.y, false, obj);
-                        
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Jestem na polu" + pAgent.x + pAgent.y);  
+                        break;
+                    }
+                    
+                    case 4: //zbieranie
+                    {                        
+                            dlm.addElement(MechanizmCzasu.GetCzas() + " eTraktor: " + "Jestem na polu" + pAgent.x + pAgent.y);  
+                        break;
+                    }
+                     case 5: //podlewanie
+                    {                        
+                            dlm.addElement(MechanizmCzasu.GetCzas() + " eTraktor: " + "Jestem na polu" + pAgent.x + pAgent.y);  
+                        break;
+                    }
+                     
+                      case 6: //sprzedawanie
+                    {                        
+                            dlm.addElement(MechanizmCzasu.GetCzas() + " eTraktor: " + "Sprzedawanie");  
                         break;
                     }
                 }
@@ -316,6 +337,7 @@ return img;
     private void drawBoard(Graphics g)
     {
         
+        g.drawImage(getSprite("tlo1.jpg"), 0  , 0 ,this);
         
         scaleX = getWidth() / board.width;
         scaleY = getHeight() / board.height;
@@ -327,9 +349,12 @@ return img;
                 //ale on akurat mogl chyba sie ladowac w kazdym miejscu etody
                 if(board.CheckPool(i, j, true))
                 {
-                    g.drawImage(getSprite("1.png"), i*scaleX-17, j*scaleY-17,this);
                     
-                    g.drawImage(getSprite("2.gif"), pozX, pozY,this);
+                    g.drawImage(getSprite("tlo21.png"), i*scaleX, j*scaleY,this);    
+                        
+                    g.drawImage(getSprite("1.png"), i*scaleX-2, j*scaleY-2,this);
+                    
+                    g.drawImage(getSprite("techn.png"), pozX, pozY,this);
                         
                 }
                 else if(board.CheckPool(i, j, false))
@@ -338,13 +363,16 @@ return img;
                     if(po instanceof ObjectStore)
                     {     
                         //hangar
-                         g.drawImage(getSprite("hangar.gif"), i*scaleX, j*scaleY,this);
+                        g.setColor(Color.GREEN);
+                        g.fillRect(i*scaleX, j*scaleY, 40, 40);
+                         g.drawImage(getSprite("han.jpg"), i*scaleX, j*scaleY,this);
 
                     }
                     if(po instanceof ObjectPackage)
                     {     
                         //kamienie
-                        g.drawImage(getSprite("kamien.gif"), i*scaleX, j*scaleY,this);
+                        g.drawImage(getSprite("tlo21.png"), i*scaleX, j*scaleY,this);   
+                        g.drawImage(getSprite("kamien.png"), i*scaleX+2, j*scaleY+2,this);
                          
                     }
                 }

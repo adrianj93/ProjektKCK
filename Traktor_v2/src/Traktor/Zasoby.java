@@ -52,8 +52,13 @@ public class Zasoby {
     public int GetStanKonta() {
         return stankonta;
     }
-    
-    public void ModyfikujZb1(int a) {
+
+    /**
+     *
+     * @param a
+     */
+    public void ModyfikujZb1(int a)
+    {
         zb1 = zb1 + a;
     }
     

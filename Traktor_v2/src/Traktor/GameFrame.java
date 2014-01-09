@@ -69,11 +69,7 @@ public class GameFrame extends java.awt.Frame {
     
     }
   
-    private void ShowTime(){
-     Zegar zegar = new Zegar();
-    jPanel1.add(zegar);
-    zegar.start();
-    }
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -101,7 +97,6 @@ public class GameFrame extends java.awt.Frame {
         jProgressBar2 = new javax.swing.JProgressBar();
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        Time = new javax.swing.JPanel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -134,14 +129,14 @@ public class GameFrame extends java.awt.Frame {
         gamePanel.setLayout(gamePanelLayout);
         gamePanelLayout.setHorizontalGroup(
             gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGap(0, 410, Short.MAX_VALUE)
         );
         gamePanelLayout.setVerticalGroup(
             gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGap(0, 410, Short.MAX_VALUE)
         );
 
-        jPanel1.add(gamePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 390, 430));
+        jPanel1.add(gamePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 410, 410));
 
         talkList.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         talkList.setModel(new javax.swing.AbstractListModel() {
@@ -271,22 +266,6 @@ public class GameFrame extends java.awt.Frame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 200, 90));
 
-        javax.swing.GroupLayout TimeLayout = new javax.swing.GroupLayout(Time);
-        Time.setLayout(TimeLayout);
-        TimeLayout.setHorizontalGroup(
-            TimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        TimeLayout.setVerticalGroup(
-            TimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 130, 50));
-        Zegar zegar = new Zegar();
-        add(zegar);
-        zegar.start();
-
         add(jPanel1, java.awt.BorderLayout.NORTH);
 
         pack();
@@ -346,7 +325,6 @@ public class GameFrame extends java.awt.Frame {
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Time;
     private javax.swing.JButton commandButton;
     private javax.swing.JTextField commandText;
     private Traktor.GamePanel gamePanel;

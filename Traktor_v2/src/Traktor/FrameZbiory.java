@@ -20,22 +20,22 @@ public class FrameZbiory extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/newpackage/harvesticons/6.png")));
         
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Zbiór z sektora I");
+        jLabel10.setText("Przenica");
         
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Zbiór z sektora II");
+        jLabel11.setText("Bataty");
         
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Zbiór z sektora III");
+        jLabel12.setText("Oliwki czarne");
         
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("Zbiór z sektora IV");
+        jLabel13.setText("Jęczmień");
         
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Zbiór z sektora V");
+        jLabel14.setText("Kawa");
         
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Zbiór z sektora VI");
+        jLabel15.setText("Herbata");
         
         
         
@@ -56,6 +56,46 @@ public class FrameZbiory extends javax.swing.JFrame {
         
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("Zebrano : " + Zasoby.z.GetZb6() + "kg");
+        
+        
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setText("Przenica: ");
+        
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setText("Bataty: ");
+        
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setText("Oliwki czarne: ");
+        
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setText("Jęczmień: ");
+        
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText("Kawa: ");
+        
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel34.setText("Herbata: ");
+        
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText("25");
+        
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel36.setText("40");
+        
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("50");
+        
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel38.setText("10");
+        
+        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel39.setText("15");
+        
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel40.setText("5");
+        
+        
+        
     }
 
     /**
@@ -115,6 +155,20 @@ public class FrameZbiory extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jTextField6 = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("eTraktor");
@@ -149,7 +203,7 @@ public class FrameZbiory extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,6 +241,11 @@ public class FrameZbiory extends javax.swing.JFrame {
         });
 
         jTextField1.setText("");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -391,8 +450,7 @@ public class FrameZbiory extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton5))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -534,24 +592,124 @@ public class FrameZbiory extends javax.swing.JFrame {
                         .addComponent(jButton7))))
         );
 
+        jPanel3.setBackground(new java.awt.Color(239, 224, 157));
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel28.setText("Aktualne stawki zbiorów w €");
+
+        jLabel29.setText("jLabel29");
+
+        jLabel30.setText("jLabel30");
+
+        jLabel31.setText("jLabel31");
+
+        jLabel32.setText("jLabel32");
+
+        jLabel33.setText("jLabel33");
+
+        jLabel34.setText("jLabel34");
+
+        jLabel35.setText("jLabel35");
+
+        jLabel36.setText("jLabel36");
+
+        jLabel37.setText("jLabel37");
+
+        jLabel38.setText("jLabel38");
+
+        jLabel39.setText("jLabel39");
+
+        jLabel40.setText("jLabel40");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel35))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel38)))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel39)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel40))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel37)))
+                .addGap(10, 10, 10))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel35)
+                    .addComponent(jLabel37)
+                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel31)
+                    .addComponent(jLabel30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32)
+                    .addComponent(jLabel33)
+                    .addComponent(jLabel34)
+                    .addComponent(jLabel38)
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel40))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(22, 22, 22)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(28, 28, 28)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(28, 28, 28)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(160, 160, 160)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -568,7 +726,9 @@ public class FrameZbiory extends javax.swing.JFrame {
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -593,12 +753,20 @@ public class FrameZbiory extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+            
     if (Zasoby.z.GetZb1()>=1)
-    {    
-        Zasoby.z.ModyfikujStanKonta(50);
-        jLabel4.setText(Zasoby.z.GetStanKontaString());
-        Zasoby.z.ModyfikujZb1(-1);
-        jLabel16.setText("Zebrano : " + Zasoby.z.GetZb1() + "kg");
+    {   
+        if ("".equals(jTextField1.getText()))
+        {
+            Zasoby.z.ModyfikujStanKonta(Integer.parseInt(jLabel35.getText()));
+            jLabel4.setText(Zasoby.z.GetStanKontaString());
+            Zasoby.z.ModyfikujZb1(-1);    
+        } else {
+            Zasoby.z.ModyfikujStanKonta(Integer.parseInt(jLabel35.getText())*Integer.parseInt(jTextField1.getText()));
+            jLabel4.setText(Zasoby.z.GetStanKontaString());
+            Zasoby.z.ModyfikujZb1(-(Integer.parseInt(jTextField1.getText())));   
+        }
+        jLabel16.setText("Zebrano : " + Zasoby.z.GetZb1() + "kg"); 
         }
     else
     {
@@ -607,11 +775,18 @@ public class FrameZbiory extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
     if (Zasoby.z.GetZb2()>=1)
-    {    
-        Zasoby.z.ModyfikujStanKonta(50);
-        jLabel4.setText(Zasoby.z.GetStanKontaString());
-        Zasoby.z.ModyfikujZb2(-1);
-        jLabel17.setText("Zebrano : " + Zasoby.z.GetZb2() + "kg");
+    {   
+        if ("".equals(jTextField2.getText()))
+        {
+            Zasoby.z.ModyfikujStanKonta(Integer.parseInt(jLabel36.getText()));
+            jLabel4.setText(Zasoby.z.GetStanKontaString());
+            Zasoby.z.ModyfikujZb2(-1);    
+        } else {
+            Zasoby.z.ModyfikujStanKonta(Integer.parseInt(jLabel36.getText())*Integer.parseInt(jTextField2.getText()));
+            jLabel4.setText(Zasoby.z.GetStanKontaString());
+            Zasoby.z.ModyfikujZb2(-(Integer.parseInt(jTextField2.getText())));   
+        }
+        jLabel17.setText("Zebrano : " + Zasoby.z.GetZb2() + "kg"); 
         }
     else
     {
@@ -620,11 +795,18 @@ public class FrameZbiory extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
     if (Zasoby.z.GetZb3()>=1)
-    {    
-        Zasoby.z.ModyfikujStanKonta(50);
-        jLabel4.setText(Zasoby.z.GetStanKontaString());
-        Zasoby.z.ModyfikujZb3(-1);
-        jLabel18.setText("Zebrano : " + Zasoby.z.GetZb3() + "kg");
+    {   
+        if ("".equals(jTextField3.getText()))
+        {
+            Zasoby.z.ModyfikujStanKonta(Integer.parseInt(jLabel37.getText()));
+            jLabel4.setText(Zasoby.z.GetStanKontaString());
+            Zasoby.z.ModyfikujZb3(-1);    
+        } else {
+            Zasoby.z.ModyfikujStanKonta(Integer.parseInt(jLabel37.getText())*Integer.parseInt(jTextField3.getText()));
+            jLabel4.setText(Zasoby.z.GetStanKontaString());
+            Zasoby.z.ModyfikujZb3(-(Integer.parseInt(jTextField3.getText())));   
+        }
+        jLabel18.setText("Zebrano : " + Zasoby.z.GetZb3() + "kg"); 
         }
     else
     {
@@ -633,11 +815,18 @@ public class FrameZbiory extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
     if (Zasoby.z.GetZb4()>=1)
-    {    
-        Zasoby.z.ModyfikujStanKonta(50);
-        jLabel4.setText(Zasoby.z.GetStanKontaString());
-        Zasoby.z.ModyfikujZb4(-1);
-        jLabel19.setText("Zebrano : " + Zasoby.z.GetZb4() + "kg");
+    {   
+        if ("".equals(jTextField4.getText()))
+        {
+            Zasoby.z.ModyfikujStanKonta(Integer.parseInt(jLabel38.getText()));
+            jLabel4.setText(Zasoby.z.GetStanKontaString());
+            Zasoby.z.ModyfikujZb4(-1);    
+        } else {
+            Zasoby.z.ModyfikujStanKonta(Integer.parseInt(jLabel38.getText())*Integer.parseInt(jTextField4.getText()));
+            jLabel4.setText(Zasoby.z.GetStanKontaString());
+            Zasoby.z.ModyfikujZb4(-(Integer.parseInt(jTextField4.getText())));   
+        }
+        jLabel19.setText("Zebrano : " + Zasoby.z.GetZb4() + "kg"); 
         }
     else
     {
@@ -646,11 +835,18 @@ public class FrameZbiory extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
     if (Zasoby.z.GetZb5()>=1)
-    {    
-        Zasoby.z.ModyfikujStanKonta(50);
-        jLabel4.setText(Zasoby.z.GetStanKontaString());
-        Zasoby.z.ModyfikujZb5(-1);
-        jLabel20.setText("Zebrano : " + Zasoby.z.GetZb5() + "kg");
+    {   
+        if ("".equals(jTextField5.getText()))
+        {
+            Zasoby.z.ModyfikujStanKonta(Integer.parseInt(jLabel39.getText()));
+            jLabel4.setText(Zasoby.z.GetStanKontaString());
+            Zasoby.z.ModyfikujZb5(-1);    
+        } else {
+            Zasoby.z.ModyfikujStanKonta(Integer.parseInt(jLabel39.getText())*Integer.parseInt(jTextField5.getText()));
+            jLabel4.setText(Zasoby.z.GetStanKontaString());
+            Zasoby.z.ModyfikujZb5(-(Integer.parseInt(jTextField5.getText())));   
+        }
+        jLabel20.setText("Zebrano : " + Zasoby.z.GetZb5() + "kg"); 
         }
     else
     {
@@ -659,11 +855,18 @@ public class FrameZbiory extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
     if (Zasoby.z.GetZb6()>=1)
-    {    
-        Zasoby.z.ModyfikujStanKonta(50);
-        jLabel4.setText(Zasoby.z.GetStanKontaString());
-        Zasoby.z.ModyfikujZb6(-1);
-        jLabel21.setText("Zebrano : " + Zasoby.z.GetZb6() + "kg");
+    {   
+        if ("".equals(jTextField6.getText()))
+        {
+            Zasoby.z.ModyfikujStanKonta(Integer.parseInt(jLabel40.getText()));
+            jLabel4.setText(Zasoby.z.GetStanKontaString());
+            Zasoby.z.ModyfikujZb6(-1);    
+        } else {
+            Zasoby.z.ModyfikujStanKonta(Integer.parseInt(jLabel40.getText())*Integer.parseInt(jTextField6.getText()));
+            jLabel4.setText(Zasoby.z.GetStanKontaString());
+            Zasoby.z.ModyfikujZb6(-(Integer.parseInt(jTextField6.getText())));   
+        }
+        jLabel21.setText("Zebrano : " + Zasoby.z.GetZb6() + "kg"); 
         }
     else
     {
@@ -673,6 +876,10 @@ public class FrameZbiory extends javax.swing.JFrame {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -736,8 +943,21 @@ public class FrameZbiory extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -745,6 +965,7 @@ public class FrameZbiory extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
