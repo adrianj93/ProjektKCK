@@ -289,24 +289,28 @@ return img;
                     }
                     case 2: //oranie
                     {
-                            dlm.addElement(MechanizmCzasu.GetCzas() + " eTraktor: " + "Jestem na polu" + pAgent.x + pAgent.y);
+                            dlm.addElement(MechanizmCzasu.GetCzas() + " eTraktor: " + "Jestem na polu" + pAgent.x + " " + pAgent.y);
+                            dlm.addElement("Czy zaorać to pole?");
                         
                         break;
                     }
                     case 3: //sianie
                     {                        
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Jestem na polu" + pAgent.x + pAgent.y);  
-                        break;
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Jestem na polu" + pAgent.x + " " + pAgent.y);  
+                            dlm.addElement("Czy zasiać to pole?");
+                         break;
                     }
                     
                     case 4: //zbieranie
                     {                        
-                            dlm.addElement(MechanizmCzasu.GetCzas() + " eTraktor: " + "Jestem na polu" + pAgent.x + pAgent.y);  
+                            dlm.addElement(MechanizmCzasu.GetCzas() + " eTraktor: " + "Jestem na polu" + pAgent.x + " " + pAgent.y);
+                            dlm.addElement("Czy zebrać plon?");
                         break;
                     }
                     case 5: //podlewanie
                     {                        
-                            dlm.addElement(MechanizmCzasu.GetCzas() + " eTraktor: " + "Jestem na polu" + pAgent.x + pAgent.y);  
+                            dlm.addElement(MechanizmCzasu.GetCzas() + " eTraktor: " + "Jestem na polu" + pAgent.x+ " " + pAgent.y);
+                            dlm.addElement("Czy podlać to pole?");
                         break;
                     }
                      
@@ -353,10 +357,12 @@ return img;
                             addTextToList( "Pomoc wróciła. Co dalej?");                   
                         break;
                     }
-                    default:
+                    case 8: // gdzie jesteś
                     {
-                            addTextToList("Za mało parametrów");
+                        dlm.addElement(MechanizmCzasu.GetCzas() + " eTraktor: " + "Jestem na polu" + pAgent.x + " " + pAgent.y);    
+                        dlm.addElement("Czy wykonać jakieś zadanie?");
                     }
+                    
                                               
                 }
             }
