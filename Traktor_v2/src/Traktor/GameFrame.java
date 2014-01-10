@@ -7,6 +7,8 @@ import Traktor.FrameUlepszenia;
 import Traktor.FrameZbiory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 import javax.swing.Timer;
@@ -62,15 +64,24 @@ public class GameFrame extends java.awt.Frame {
         init();
         
         java.util.Timer t = new java.util.Timer();
-        t.schedule(new TimeTask(),0);
+        t.schedule(new TimeTask(),1000);
         
     }
 
     class TimeTask extends java.util.TimerTask{
         @Override
         public void run(){
-            while(true)
-            jLabel9.setText(MechanizmCzasu.GetCzas());
+            
+                try {
+                    while(true){
+                    jLabel9.setText(MechanizmCzasu.GetCzas());
+                    Thread.sleep(1000);
+                    }
+     
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
         }
     }
     
