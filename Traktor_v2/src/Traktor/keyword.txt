@@ -41,3 +41,4 @@ wyprzedaj;6
 opyl;6
 rzepak;6#1
 wroc;7
+gdzie;8
