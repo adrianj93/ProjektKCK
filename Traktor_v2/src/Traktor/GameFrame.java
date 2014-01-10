@@ -7,6 +7,7 @@ import Traktor.FrameUlepszenia;
 import Traktor.FrameZbiory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -66,6 +67,9 @@ public class GameFrame extends java.awt.Frame {
         java.util.Timer t = new java.util.Timer();
         t.schedule(new TimeTask(),1000);
         
+        java.util.Timer p = new java.util.Timer();
+        p.schedule(new WeatherTask(),1000);
+        
     }
 
     class TimeTask extends java.util.TimerTask{
@@ -76,6 +80,23 @@ public class GameFrame extends java.awt.Frame {
                     while(true){
                     jLabel9.setText(MechanizmCzasu.GetCzas());
                     Thread.sleep(1000);
+                    }
+     
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+        }
+    }
+    class WeatherTask extends java.util.TimerTask{
+       public void run(){
+            
+                try {
+                    
+                    while(true){    
+                    jLabel10.setText(getStringPogoda());
+                    Thread.sleep(60000);
+                    
                     }
      
                 } catch (InterruptedException ex) {
