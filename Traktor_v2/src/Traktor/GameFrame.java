@@ -344,7 +344,6 @@ public class GameFrame extends java.awt.Frame {
 
         new FrameUlepszenia().setVisible(true);
         zasoby = Zasoby.z.GetStanKonta();
-        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonZbioryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZbioryActionPerformed
