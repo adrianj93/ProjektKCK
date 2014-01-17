@@ -329,7 +329,7 @@ return img;
                     
                     case 2: //oranie
                     {
-                        
+                        int ilek=0;
                         for (int j = 0; j < excmd.length; j++) {
                           
                                 if (!excmd[j].argCus) {
@@ -346,16 +346,21 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
-                           
+                            ilek=ilek+1;
+                            
                         }
                         else{
-                      
+                             
                         PlowObject op1 = new PlowObject();
                         board.SetObject(a, b, false, op1);
                         }
                             }
                         }
+                             if(ilek>0)
+                            {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " ilość przeszkód: "+ilek);
+                            }
                                             
                                                                         break;
                                                                         }
@@ -369,17 +374,22 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
-                           
+                            ilek=ilek+1;
+                            
                         }
                         else{
-                      
+                             
                         PlowObject op1 = new PlowObject();
                         board.SetObject(a, b, false, op1);
                         }
                             }
                         }
-                                           
+                             if(ilek>0)
+                            {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " ilość przeszkód: "+ilek);
+                            }
+                                            
                                                                         break;
                                                                         }
                         case 3: {
@@ -387,20 +397,25 @@ return img;
                       
                         for(int a = 0; a<5;a++){
                             for(int b= 3;b < 6;b++){
-                            isObstacle =  checkIfIsObstacle(a, b);
+                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
-                           
+                            ilek=ilek+1;
+                            
                         }
                         else{
-                      
+                             
                         PlowObject op1 = new PlowObject();
                         board.SetObject(a, b, false, op1);
                         }
                             }
                         }
-                                           
+                             if(ilek>0)
+                            {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " ilość przeszkód: "+ilek);
+                            }
+                                            
                                                                         break;
                                                                         }
                         case 4: {
@@ -408,21 +423,25 @@ return img;
                       
                         for(int a = 6; a<11;a++){
                             for(int b= 3;b < 6;b++){
-                            isObstacle =  checkIfIsObstacle(a, b);
+                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
-                           
+                            ilek=ilek+1;
+                            
                         }
                         else{
-                      
+                             
                         PlowObject op1 = new PlowObject();
                         board.SetObject(a, b, false, op1);
                         }
                             }
                         }
-                                           
-                                           
+                             if(ilek>0)
+                            {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " ilość przeszkód: "+ilek);
+                            }
+                                            
                                                                         break;
                                                                         }
                         case 5: {
@@ -430,21 +449,25 @@ return img;
                       
                         for(int a = 0; a<5;a++){
                             for(int b= 6;b < 9;b++){
-                            isObstacle =  checkIfIsObstacle(a, b);
+                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
-                           
+                            ilek=ilek+1;
+                            
                         }
                         else{
-                      
+                             
                         PlowObject op1 = new PlowObject();
                         board.SetObject(a, b, false, op1);
                         }
                             }
                         }
-                                           
-                                           
+                             if(ilek>0)
+                            {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " ilość przeszkód: "+ilek);
+                            }
+                                            
                                                                         break;
                                                                         }
                         case 6: {
@@ -452,21 +475,25 @@ return img;
                       
                         for(int a = 6; a<11;a++){
                             for(int b= 6;b < 9;b++){
-                            isObstacle =  checkIfIsObstacle(a, b);
+                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
-                           
+                            ilek=ilek+1;
+                            
                         }
                         else{
-                      
+                             
                         PlowObject op1 = new PlowObject();
                         board.SetObject(a, b, false, op1);
                         }
                             }
                         }
-                                           
-                                           
+                             if(ilek>0)
+                            {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " ilość przeszkód: "+ilek);
+                            }
+                                            
                                                                         break;
                                                                         }
                         case 7: {
@@ -479,7 +506,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           ilek=ilek+1;
                            
                         }
                         else{
@@ -497,7 +524,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -515,7 +542,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -532,7 +559,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -550,7 +577,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -568,7 +595,8 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
+                            
                            
                         }
                         else{
@@ -578,6 +606,11 @@ return img;
                         }
                             }
                         }
+                         if(ilek>0)
+                            {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " ilość przeszkód: "+ilek);
+                            }
                                            
                                                                         break;
                                                                         }
@@ -670,113 +703,115 @@ return img;
                          isPlow =  checkIfIsPlow(pAgent.x, pAgent.y);
                          if(isPlow)
                          {
+                             
+                             
                              if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=0 && pAgent.y<=2){
                             SowObject op1 = new SowObject();
-                            board.SetObject(0, 0, false, op1);
-                        board.SetObject(0, 1, false, op1);
-                        board.SetObject(0, 2, false, op1);
-                        board.SetObject(1, 0, false, op1);
-                        board.SetObject(1, 1, false, op1);
-                        board.SetObject(1, 2, false, op1);
-                        board.SetObject(2, 0, false, op1);
-                        board.SetObject(2, 1, false, op1);
-                        board.SetObject(2, 2, false, op1);
-                        board.SetObject(3, 0, false, op1);
-                        board.SetObject(3, 1, false, op1);
-                        board.SetObject(3, 2, false, op1);
-                        board.SetObject(4, 0, false, op1);
-                        board.SetObject(4, 1, false, op1);
-                        board.SetObject(4, 2, false, op1);
+                          for(int a = 0; a<5;a++){
+                            for(int b= 0;b < 3;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             SowObject op1 = new SowObject();
-                           board.SetObject(6, 0, false, op1);
-                        board.SetObject(6, 1, false, op1);
-                        board.SetObject(6, 2, false, op1);
-                        board.SetObject(7, 0, false, op1);
-                        board.SetObject(7, 1, false, op1);
-                        board.SetObject(7, 2, false, op1);
-                        board.SetObject(8, 0, false, op1);
-                        board.SetObject(8, 1, false, op1);
-                        board.SetObject(8, 2, false, op1);
-                        board.SetObject(9, 0, false, op1);
-                        board.SetObject(9, 1, false, op1);
-                        board.SetObject(9, 2, false, op1);
-                        board.SetObject(10, 0, false, op1);
-                        board.SetObject(10, 1, false, op1);
-                        board.SetObject(10, 2, false, op1);
+                             for(int a = 6; a<11;a++){
+                            for(int b= 0;b < 3;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             SowObject op1 = new SowObject();
-                            board.SetObject(0, 3, false, op1);
-                        board.SetObject(0, 4, false, op1);
-                        board.SetObject(0, 5, false, op1);
-                        board.SetObject(1, 3, false, op1);
-                        board.SetObject(1, 4, false, op1);
-                        board.SetObject(1, 5, false, op1);
-                        board.SetObject(2, 3, false, op1);
-                        board.SetObject(2, 4, false, op1);
-                        board.SetObject(2, 5, false, op1);
-                        board.SetObject(3, 3, false, op1);
-                        board.SetObject(3, 4, false, op1);
-                        board.SetObject(3, 5, false, op1);
-                        board.SetObject(4, 3, false, op1);
-                        board.SetObject(4, 4, false, op1);
-                        board.SetObject(4, 5, false, op1);
+                            for(int a = 0; a<5;a++){
+                            for(int b= 3;b < 6;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             SowObject op1 = new SowObject();
-                            board.SetObject(6, 3, false, op1);
-                        board.SetObject(6, 4, false, op1);
-                        board.SetObject(6, 5, false, op1);
-                        board.SetObject(7, 3, false, op1);
-                        board.SetObject(7, 4, false, op1);
-                        board.SetObject(7, 5, false, op1);
-                        board.SetObject(8, 3, false, op1);
-                        board.SetObject(8, 4, false, op1);
-                        board.SetObject(8, 5, false, op1);
-                        board.SetObject(9, 3, false, op1);
-                        board.SetObject(9, 4, false, op1);
-                        board.SetObject(9, 5, false, op1);
-                        board.SetObject(10, 3, false, op1);
-                        board.SetObject(10, 4, false, op1);
-                        board.SetObject(10, 5, false, op1);
+                           for(int a = 6; a<11;a++){
+                            for(int b= 3;b < 6;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             SowObject op1 = new SowObject();
-                           board.SetObject(0, 6, false, op1);
-                        board.SetObject(0, 7, false, op1);
-                        board.SetObject(0, 8, false, op1);
-                        board.SetObject(1, 6, false, op1);
-                        board.SetObject(1, 7, false, op1);
-                        board.SetObject(1, 8, false, op1);
-                        board.SetObject(2, 6, false, op1);
-                        board.SetObject(2, 7, false, op1);
-                        board.SetObject(2, 8, false, op1);
-                        board.SetObject(3, 6, false, op1);
-                        board.SetObject(3, 7, false, op1);
-                        board.SetObject(3, 8, false, op1);
-                        board.SetObject(4, 6, false, op1);
-                        board.SetObject(4, 7, false, op1);
-                        board.SetObject(4, 8, false, op1);
+                          for(int a = 0; a<5;a++){
+                            for(int b= 6;b < 9;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                             SowObject op1 = new SowObject();
-                            board.SetObject(6, 6, false, op1);
-                        board.SetObject(6, 7, false, op1);
-                        board.SetObject(6, 8, false, op1);
-                        board.SetObject(7, 6, false, op1);
-                        board.SetObject(7, 7, false, op1);
-                        board.SetObject(7, 8, false, op1);
-                        board.SetObject(8, 6, false, op1);
-                        board.SetObject(8, 7, false, op1);
-                        board.SetObject(8, 8, false, op1);
-                        board.SetObject(9, 6, false, op1);
-                        board.SetObject(9, 7, false, op1);
-                        board.SetObject(9, 8, false, op1);
-                        board.SetObject(10, 6, false, op1);
-                        board.SetObject(10, 7, false, op1);
-                        board.SetObject(10, 8, false, op1);
+                             for(int a = 6; a<11;a++){
+                            for(int b= 6;b < 9;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                          }
                          else
@@ -800,117 +835,118 @@ return img;
                             CollectingObject op1 = new CollectingObject();
                             if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=0 && pAgent.y<=2){
                             
-                            board.SetObject(0, 0, false, op1);
-                        board.SetObject(0, 1, false, op1);
-                        board.SetObject(0, 2, false, op1);
-                        board.SetObject(1, 0, false, op1);
-                        board.SetObject(1, 1, false, op1);
-                        board.SetObject(1, 2, false, op1);
-                        board.SetObject(2, 0, false, op1);
-                        board.SetObject(2, 1, false, op1);
-                        board.SetObject(2, 2, false, op1);
-                        board.SetObject(3, 0, false, op1);
-                        board.SetObject(3, 1, false, op1);
-                        board.SetObject(3, 2, false, op1);
-                        board.SetObject(4, 0, false, op1);
-                        board.SetObject(4, 1, false, op1);
-                        board.SetObject(4, 2, false, op1);
+                              
+                          for(int a = 0; a<5;a++){
+                            for(int b= 0;b < 3;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
-                           board.SetObject(6, 0, false, op1);
-                        board.SetObject(6, 1, false, op1);
-                        board.SetObject(6, 2, false, op1);
-                        board.SetObject(7, 0, false, op1);
-                        board.SetObject(7, 1, false, op1);
-                        board.SetObject(7, 2, false, op1);
-                        board.SetObject(8, 0, false, op1);
-                        board.SetObject(8, 1, false, op1);
-                        board.SetObject(8, 2, false, op1);
-                        board.SetObject(9, 0, false, op1);
-                        board.SetObject(9, 1, false, op1);
-                        board.SetObject(9, 2, false, op1);
-                        board.SetObject(10, 0, false, op1);
-                        board.SetObject(10, 1, false, op1);
-                        board.SetObject(10, 2, false, op1);
+                             for(int a = 6; a<11;a++){
+                            for(int b= 0;b < 3;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
-                            board.SetObject(0, 3, false, op1);
-                        board.SetObject(0, 4, false, op1);
-                        board.SetObject(0, 5, false, op1);
-                        board.SetObject(1, 3, false, op1);
-                        board.SetObject(1, 4, false, op1);
-                        board.SetObject(1, 5, false, op1);
-                        board.SetObject(2, 3, false, op1);
-                        board.SetObject(2, 4, false, op1);
-                        board.SetObject(2, 5, false, op1);
-                        board.SetObject(3, 3, false, op1);
-                        board.SetObject(3, 4, false, op1);
-                        board.SetObject(3, 5, false, op1);
-                        board.SetObject(4, 3, false, op1);
-                        board.SetObject(4, 4, false, op1);
-                        board.SetObject(4, 5, false, op1);
+                            for(int a = 0; a<5;a++){
+                            for(int b= 3;b < 6;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
-                            board.SetObject(6, 3, false, op1);
-                        board.SetObject(6, 4, false, op1);
-                        board.SetObject(6, 5, false, op1);
-                        board.SetObject(7, 3, false, op1);
-                        board.SetObject(7, 4, false, op1);
-                        board.SetObject(7, 5, false, op1);
-                        board.SetObject(8, 3, false, op1);
-                        board.SetObject(8, 4, false, op1);
-                        board.SetObject(8, 5, false, op1);
-                        board.SetObject(9, 3, false, op1);
-                        board.SetObject(9, 4, false, op1);
-                        board.SetObject(9, 5, false, op1);
-                        board.SetObject(10, 3, false, op1);
-                        board.SetObject(10, 4, false, op1);
-                        board.SetObject(10, 5, false, op1);
+                           for(int a = 6; a<11;a++){
+                            for(int b= 3;b < 6;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
-                           board.SetObject(0, 6, false, op1);
-                        board.SetObject(0, 7, false, op1);
-                        board.SetObject(0, 8, false, op1);
-                        board.SetObject(1, 6, false, op1);
-                        board.SetObject(1, 7, false, op1);
-                        board.SetObject(1, 8, false, op1);
-                        board.SetObject(2, 6, false, op1);
-                        board.SetObject(2, 7, false, op1);
-                        board.SetObject(2, 8, false, op1);
-                        board.SetObject(3, 6, false, op1);
-                        board.SetObject(3, 7, false, op1);
-                        board.SetObject(3, 8, false, op1);
-                        board.SetObject(4, 6, false, op1);
-                        board.SetObject(4, 7, false, op1);
-                        board.SetObject(4, 8, false, op1);
+                          for(int a = 0; a<5;a++){
+                            for(int b= 6;b < 9;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                            
-                            board.SetObject(6, 6, false, op1);
-                        board.SetObject(6, 7, false, op1);
-                        board.SetObject(6, 8, false, op1);
-                        board.SetObject(7, 6, false, op1);
-                        board.SetObject(7, 7, false, op1);
-                        board.SetObject(7, 8, false, op1);
-                        board.SetObject(8, 6, false, op1);
-                        board.SetObject(8, 7, false, op1);
-                        board.SetObject(8, 8, false, op1);
-                        board.SetObject(9, 6, false, op1);
-                        board.SetObject(9, 7, false, op1);
-                        board.SetObject(9, 8, false, op1);
-                        board.SetObject(10, 6, false, op1);
-                        board.SetObject(10, 7, false, op1);
-                        board.SetObject(10, 8, false, op1);
-                         }
-                        }
-                        else
+                             for(int a = 6; a<11;a++){
+                            for(int b= 6;b < 9;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Pole musi zostać najpierw podlane");
-                        }}
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
+                         }
+                         }
+                         else
+                         {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Pole musi zostać najpierw zaorane");      
+                         }}
                         break;
                     }
                     case 5: //podlewanie
@@ -926,118 +962,118 @@ return img;
                         {
                             WaterObject op1 = new WaterObject();
                              if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=0 && pAgent.y<=2){
-                            
-                            board.SetObject(0, 0, false, op1);
-                        board.SetObject(0, 1, false, op1);
-                        board.SetObject(0, 2, false, op1);
-                        board.SetObject(1, 0, false, op1);
-                        board.SetObject(1, 1, false, op1);
-                        board.SetObject(1, 2, false, op1);
-                        board.SetObject(2, 0, false, op1);
-                        board.SetObject(2, 1, false, op1);
-                        board.SetObject(2, 2, false, op1);
-                        board.SetObject(3, 0, false, op1);
-                        board.SetObject(3, 1, false, op1);
-                        board.SetObject(3, 2, false, op1);
-                        board.SetObject(4, 0, false, op1);
-                        board.SetObject(4, 1, false, op1);
-                        board.SetObject(4, 2, false, op1);
+                              
+                          for(int a = 0; a<5;a++){
+                            for(int b= 0;b < 3;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
-                           board.SetObject(6, 0, false, op1);
-                        board.SetObject(6, 1, false, op1);
-                        board.SetObject(6, 2, false, op1);
-                        board.SetObject(7, 0, false, op1);
-                        board.SetObject(7, 1, false, op1);
-                        board.SetObject(7, 2, false, op1);
-                        board.SetObject(8, 0, false, op1);
-                        board.SetObject(8, 1, false, op1);
-                        board.SetObject(8, 2, false, op1);
-                        board.SetObject(9, 0, false, op1);
-                        board.SetObject(9, 1, false, op1);
-                        board.SetObject(9, 2, false, op1);
-                        board.SetObject(10, 0, false, op1);
-                        board.SetObject(10, 1, false, op1);
-                        board.SetObject(10, 2, false, op1);
+                             for(int a = 6; a<11;a++){
+                            for(int b= 0;b < 3;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
-                            board.SetObject(0, 3, false, op1);
-                        board.SetObject(0, 4, false, op1);
-                        board.SetObject(0, 5, false, op1);
-                        board.SetObject(1, 3, false, op1);
-                        board.SetObject(1, 4, false, op1);
-                        board.SetObject(1, 5, false, op1);
-                        board.SetObject(2, 3, false, op1);
-                        board.SetObject(2, 4, false, op1);
-                        board.SetObject(2, 5, false, op1);
-                        board.SetObject(3, 3, false, op1);
-                        board.SetObject(3, 4, false, op1);
-                        board.SetObject(3, 5, false, op1);
-                        board.SetObject(4, 3, false, op1);
-                        board.SetObject(4, 4, false, op1);
-                        board.SetObject(4, 5, false, op1);
+                            for(int a = 0; a<5;a++){
+                            for(int b= 3;b < 6;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
-                            board.SetObject(6, 3, false, op1);
-                        board.SetObject(6, 4, false, op1);
-                        board.SetObject(6, 5, false, op1);
-                        board.SetObject(7, 3, false, op1);
-                        board.SetObject(7, 4, false, op1);
-                        board.SetObject(7, 5, false, op1);
-                        board.SetObject(8, 3, false, op1);
-                        board.SetObject(8, 4, false, op1);
-                        board.SetObject(8, 5, false, op1);
-                        board.SetObject(9, 3, false, op1);
-                        board.SetObject(9, 4, false, op1);
-                        board.SetObject(9, 5, false, op1);
-                        board.SetObject(10, 3, false, op1);
-                        board.SetObject(10, 4, false, op1);
-                        board.SetObject(10, 5, false, op1);
+                           for(int a = 6; a<11;a++){
+                            for(int b= 3;b < 6;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
-                           board.SetObject(0, 6, false, op1);
-                        board.SetObject(0, 7, false, op1);
-                        board.SetObject(0, 8, false, op1);
-                        board.SetObject(1, 6, false, op1);
-                        board.SetObject(1, 7, false, op1);
-                        board.SetObject(1, 8, false, op1);
-                        board.SetObject(2, 6, false, op1);
-                        board.SetObject(2, 7, false, op1);
-                        board.SetObject(2, 8, false, op1);
-                        board.SetObject(3, 6, false, op1);
-                        board.SetObject(3, 7, false, op1);
-                        board.SetObject(3, 8, false, op1);
-                        board.SetObject(4, 6, false, op1);
-                        board.SetObject(4, 7, false, op1);
-                        board.SetObject(4, 8, false, op1);
+                          for(int a = 0; a<5;a++){
+                            for(int b= 6;b < 9;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
+                        {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
-                           
-                            board.SetObject(6, 6, false, op1);
-                        board.SetObject(6, 7, false, op1);
-                        board.SetObject(6, 8, false, op1);
-                        board.SetObject(7, 6, false, op1);
-                        board.SetObject(7, 7, false, op1);
-                        board.SetObject(7, 8, false, op1);
-                        board.SetObject(8, 6, false, op1);
-                        board.SetObject(8, 7, false, op1);
-                        board.SetObject(8, 8, false, op1);
-                        board.SetObject(9, 6, false, op1);
-                        board.SetObject(9, 7, false, op1);
-                        board.SetObject(9, 8, false, op1);
-                        board.SetObject(10, 6, false, op1);
-                        board.SetObject(10, 7, false, op1);
-                        board.SetObject(10, 8, false, op1);
-                         }
-                        }
-                        else
+                            
+                             for(int a = 6; a<11;a++){
+                            for(int b= 6;b < 9;b++){
+                            isObstacle =  checkIfIsObstacle(a, b);
+                            if(isObstacle)
                         {
-                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Pole musi zostać najpierw zasiane");
-                        }}
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Na polu są przeszkody! USUŃ JE");
+                           
+                        }
+                        else{
+                      
+                        
+                        board.SetObject(a, b, false, op1);
+                        }
+                            }
+                        }
+                         }
+                         }
+                         else
+                         {
+                            dlm.addElement( MechanizmCzasu.GetCzas() + " eTraktor: " + "Pole musi zostać najpierw zaorane");      
+                         }}
                         break;
                     }
                      
