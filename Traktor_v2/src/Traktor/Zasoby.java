@@ -6,12 +6,12 @@ public class Zasoby {
     int zb1,zb2,zb3,zb4,zb5,zb6;
     int zasoby;
     int stankonta;
-    int elektrycznosc;
+    double elektrycznosc;
     
     public Zasoby() {
         zasoby = 0;
         stankonta = 2999;
-        elektrycznosc = 75;
+        elektrycznosc = 100;
         
         zb1=10;
         zb2=20;
@@ -94,7 +94,11 @@ public class Zasoby {
         return StanKontaString;
     }
     
-    public int GetElektrycznosc() {
+    public double GetElektrycznosc() {
         return elektrycznosc;
+    }
+    
+    public void ModyfikujElektrycznosc (double elektrycznosc_delta) {
+        elektrycznosc = elektrycznosc + elektrycznosc_delta;
     }
 }

@@ -79,6 +79,10 @@ public class GameFrame extends java.awt.Frame {
                 try {
                     while(true){
                     jLabel9.setText(MechanizmCzasu.GetCzas());
+                    if (Ulepszenia.u.SwiatlaStan() == true) {Zasoby.z.ModyfikujElektrycznosc(-0.3);}
+                    jProgressBar2.setValue((int) Zasoby.z.GetElektrycznosc());
+                    
+                    
                     Thread.sleep(1000);
                     }
      
@@ -183,14 +187,14 @@ public class GameFrame extends java.awt.Frame {
         gamePanel.setLayout(gamePanelLayout);
         gamePanelLayout.setHorizontalGroup(
             gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
         gamePanelLayout.setVerticalGroup(
             gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 410, Short.MAX_VALUE)
         );
 
-        jPanel1.add(gamePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 410, 410));
+        jPanel1.add(gamePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 460, 410));
 
         talkList.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         talkList.setModel(new javax.swing.AbstractListModel() {
@@ -274,7 +278,7 @@ public class GameFrame extends java.awt.Frame {
         jProgressBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jProgressBar1.setMaximumSize(new java.awt.Dimension(20, 14));
 
-        jProgressBar2.setValue(Zasoby.z.GetElektrycznosc());
+        jProgressBar2.setValue((int)Zasoby.z.GetElektrycznosc());
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Stan paliwa");
