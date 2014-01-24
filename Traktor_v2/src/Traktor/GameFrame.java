@@ -24,6 +24,7 @@ public class GameFrame extends java.awt.Frame {
     public String getStringPogoda() {
         String pogoda;
         
+        
         switch(MechanizmCzasu.getPogoda()){
             case 1: 
               pogoda = "słońce";
@@ -53,10 +54,10 @@ public class GameFrame extends java.awt.Frame {
     }
     
     public void getHelp(){
-        dlm.addElement("jedź - ");
-        dlm.addElement("oraj - ");
-        dlm.addElement("siej - ");
-        dlm.addElement("zbieraj - ");
+        dlm.add(0,"jedź - ");
+        dlm.add(1,"oraj - ");
+        dlm.add(2,"siej - ");
+        dlm.add(3,"zbieraj - ");
     }
  
     public GameFrame() {        
@@ -69,19 +70,25 @@ public class GameFrame extends java.awt.Frame {
         
         java.util.Timer p = new java.util.Timer();
         p.schedule(new WeatherTask(),1000);
-        
+             
     }
 
     class TimeTask extends java.util.TimerTask{
+       
         @Override
         public void run(){
             
                 try {
                     while(true){
+                    jLabel4.setText(Zasoby.z.GetStanKontaString());
                     jLabel9.setText(MechanizmCzasu.GetCzas());
                     if (Ulepszenia.u.SwiatlaStan() == true) {Zasoby.z.ModyfikujElektrycznosc(-0.3);}
                     jProgressBar2.setValue((int) Zasoby.z.GetElektrycznosc());
+                    jProgressBar3.setValue((int) Zasoby.z.GetProcentZasoby());
+                    Zasoby.z.ModPaliwo(-0.05);
+                    jProgressBar1.setValue((int) Zasoby.z.GetPaliwo());
                     
+                    Zasoby.z.GetZb1();
                     
                     Thread.sleep(1000);
                     }
@@ -115,12 +122,12 @@ public class GameFrame extends java.awt.Frame {
         dlm = new DefaultListModel();
         talkList.setModel(dlm);
         gamePanel.SetDLM(dlm);
-        dlm.addElement(Informations.FirstInfo());
-        dlm.addElement(Informations.SecondInfo());
-        dlm.addElement("================================");
-        dlm.addElement("Witaj w programie eTraktor!");
-        dlm.addElement("Listę dostępnych funcji otrzymasz również po wpisaniu \"pomoc gry\".");
-        dlm.addElement("Rozpocznij więc uprawe.");
+        dlm.add(0,Informations.FirstInfo());
+        dlm.add(1,Informations.SecondInfo());
+        dlm.add(2,"================================");
+        dlm.add(3,"Witaj w programie eTraktor!");
+        dlm.add(4,"Listę dostępnych funcji otrzymasz również po wpisaniu \"pomoc gry\".");
+        dlm.add(5,"Rozpocznij więc uprawe.");
         //dlm.addElement(Informations.SecondInfo());
         
     
@@ -155,6 +162,7 @@ public class GameFrame extends java.awt.Frame {
         jProgressBar2 = new javax.swing.JProgressBar();
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -173,7 +181,7 @@ public class GameFrame extends java.awt.Frame {
                 commandText_KeyPressed(evt);
             }
         });
-        jPanel1.add(commandText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 290, 30));
+        jPanel1.add(commandText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 440, 30));
 
         commandButton.setText("Wyślij");
         commandButton.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +189,7 @@ public class GameFrame extends java.awt.Frame {
                 commandButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(commandButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 80, 30));
+        jPanel1.add(commandButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 80, 30));
 
         javax.swing.GroupLayout gamePanelLayout = new javax.swing.GroupLayout(gamePanel);
         gamePanel.setLayout(gamePanelLayout);
@@ -194,7 +202,7 @@ public class GameFrame extends java.awt.Frame {
             .addGap(0, 410, Short.MAX_VALUE)
         );
 
-        jPanel1.add(gamePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 460, 410));
+        jPanel1.add(gamePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 460, 410));
 
         talkList.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         talkList.setModel(new javax.swing.AbstractListModel() {
@@ -204,7 +212,7 @@ public class GameFrame extends java.awt.Frame {
         });
         talkScrollPanel.setViewportView(talkList);
 
-        jPanel1.add(talkScrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 370, 250));
+        jPanel1.add(talkScrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 520, 250));
 
         jPanel2.setBackground(new java.awt.Color(255, 238, 199));
 
@@ -253,7 +261,7 @@ public class GameFrame extends java.awt.Frame {
                 jButtonZbioryActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonZbiory, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 13, -1, 30));
+        jPanel1.add(jButtonZbiory, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, -1, 30));
 
         jButton1.setText("Sklep z ulepszeniami");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -261,7 +269,7 @@ public class GameFrame extends java.awt.Frame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 13, 160, 30));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 160, 30));
 
         jLabel3.setText("Stan konta:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
@@ -324,6 +332,14 @@ public class GameFrame extends java.awt.Frame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 200, 90));
 
+        jButton2.setText("Zasoby");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 80, 30));
+
         add(jPanel1, java.awt.BorderLayout.NORTH);
 
         pack();
@@ -340,7 +356,11 @@ public class GameFrame extends java.awt.Frame {
        String cmd = commandText.getText();
         
         addTextToList(cmd);
-        gamePanel.Run(cmd);       
+        try {       
+            gamePanel.Run(cmd);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         commandText.setText("");
     }//GEN-LAST:event_commandButtonActionPerformed
 
@@ -362,9 +382,13 @@ public class GameFrame extends java.awt.Frame {
         }
     }//GEN-LAST:event_commandText_KeyPressed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new FrameZasoby().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private void addTextToList(String text)
     {
-        dlm.addElement("Operator: " + text);
+        dlm.add(0,"Operator: " + text);
         
     }
     /**
@@ -387,6 +411,7 @@ public class GameFrame extends java.awt.Frame {
     private javax.swing.JTextField commandText;
     private Traktor.GamePanel gamePanel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonZbiory;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

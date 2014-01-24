@@ -226,6 +226,7 @@ public class FrameUlepszenia extends javax.swing.JFrame {
         Ulepszenia.u.CapacityPack1();
         jLabel4.setText(Zasoby.z.GetStanKontaString());
         jProgressBar2.setValue(Ulepszenia.u.GetCapacity());
+        Zasoby.z.CapacityPackLevelUp(500.0);
         
     }//GEN-LAST:event_jButton4ActionPerformed
 

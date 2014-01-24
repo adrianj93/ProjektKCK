@@ -10,15 +10,15 @@ package Traktor;
  *
  * @author Łukasz
  */
-public class WaterObject extends PoolObject {
+public class WaterObjectOliwki extends PoolObject {
     String color;
     
-    public WaterObject()
+    public WaterObjectOliwki()
     {
         
     }
     
-    public WaterObject(String _color)
+    public WaterObjectOliwki(String _color)
     {
         color = _color;
     }
