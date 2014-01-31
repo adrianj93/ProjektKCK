@@ -14,12 +14,13 @@ import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class GamePanel extends javax.swing.JPanel {
     
     public static final int SZEROKOSC = 25;
     public static final int WYSOKOSC = 250;
-    public static final int SZYBKOSC = 600;
+    
     DefaultListModel dlm; 
     Interpreter interpreter;
     Board board;
@@ -40,7 +41,10 @@ public class GamePanel extends javax.swing.JPanel {
         sprites = new HashMap();
        
     }
-    
+    public static int losuj(int n){
+        Random rand = new Random();
+        return rand.nextInt(n);
+    }
     public HashMap sprites;
     public void SetDLM(DefaultListModel _dlm)
     {
@@ -73,7 +77,7 @@ public class GamePanel extends javax.swing.JPanel {
             
             do
             {
-                x = rand.nextInt(board.width );
+                x = rand.nextInt(board.width-1 );
                 y = rand.nextInt(board.height-2 );
             }while(board.CheckPool(x, y, false));
             
@@ -132,6 +136,7 @@ return img;
     {
         dlm.add(0,MechanizmCzasu.GetCzas() + " eT: " + text);
     }
+    int SZYBKOSC=300;
     
     public void Run(String text) throws InterruptedException {
         ExecCommand[] excmd = interpreter.PrepareText(text);
@@ -141,6 +146,33 @@ return img;
         boolean isSow = false;
         boolean isWater = false;
         boolean isRoute = false;
+        
+        if(GameFrame.gf.aktpog=="słońce"){
+                             SZYBKOSC=300;
+        if (Ulepszenia.u.SwiatlaStan() == true)
+            SZYBKOSC=300;
+        }
+        if(GameFrame.gf.aktpog=="deszcz"){
+                             SZYBKOSC=700;
+        if (Ulepszenia.u.SwiatlaStan() == true)
+            SZYBKOSC=300;
+        }
+        if(GameFrame.gf.aktpog=="śnieg"){
+                             SZYBKOSC=1000;
+        if (Ulepszenia.u.SwiatlaStan() == true)
+            SZYBKOSC=300;
+        }
+        if(GameFrame.gf.aktpog=="wiatr/mgła"){
+                             SZYBKOSC=1000;
+        if (Ulepszenia.u.SwiatlaStan() == true)
+            SZYBKOSC=300;
+        }
+        if(GameFrame.gf.aktpog=="burza"){
+                             SZYBKOSC=1500;
+        if (Ulepszenia.u.SwiatlaStan() == true)
+            SZYBKOSC=300;
+        }
+        
         
         Thread.sleep(SZYBKOSC);
 
@@ -163,7 +195,7 @@ return img;
                 
                 Point pAgent = findAgent();
                 int no = excmd[i].cmd.GetNo();
-
+                   
                 switch (no) {
                     case 1: //poruszanie się
                     { 
@@ -182,13 +214,22 @@ return img;
                                         switch (argNo) {
                                             
                                             case 1: {
-                                                //p.agent to ten czarny kwadracik. Usunąłem go, ale umownie on cały czas jest
-                                                //i w jego miejscu posawiłem traktor, dzieki temu działa usuwanie
+                                                
                                                 if (pAgent.x > 0) {   
                                                     isOccupied =  checkIfIsOccupied(pAgent.x-1, pAgent.y);
                                                     isObstacle =  checkIfIsObstacle(pAgent.x-1, pAgent.y);
                                                     pAgent.x -= 1;
+                                                     int n;
+                                                     n = 3;
+                                                     int k = losuj(n); 
+                                                    if(k==0)
                                                     addTextToList( "Dojechałem. Co dalej?");
+                                                    if(k==1)
+                                                    addTextToList( "Jestem na miejscu.");
+                                                    if(k==2)
+                                                    addTextToList( "Polecenie wykonane");
+                                                    if(k==3)
+                                                    addTextToList( "Dojechałem na wyznaczone miejsce");
                                                     gdzie=gdzie+1;
                                                 }
                                                 else
@@ -203,7 +244,17 @@ return img;
                                                     isOccupied =  checkIfIsOccupied(pAgent.x, pAgent.y - 1);
                                                     isObstacle =  checkIfIsObstacle(pAgent.x, pAgent.y - 1);
                                                     pAgent.y -= 1;
+                                                    int n;
+                                                     n = 3;
+                                                     int k = losuj(n); 
+                                                    if(k==0)
                                                     addTextToList( "Dojechałem. Co dalej?");
+                                                    if(k==1)
+                                                    addTextToList( "Jestem na miejscu.");
+                                                    if(k==2)
+                                                    addTextToList( "Polecenie wykonane");
+                                                    if(k==3)
+                                                    addTextToList( "Dojechałem na wyznaczone miejsce");
                                                     gdzie=gdzie+1;
                                                 }
                                                 else
@@ -218,7 +269,17 @@ return img;
                                                     isOccupied =  checkIfIsOccupied(pAgent.x+1, pAgent.y);
                                                     isObstacle =  checkIfIsObstacle(pAgent.x+1, pAgent.y);
                                                     pAgent.x += 1;
+                                                    int n;
+                                                     n = 3;
+                                                     int k = losuj(n); 
+                                                    if(k==0)
                                                     addTextToList( "Dojechałem. Co dalej?");
+                                                    if(k==1)
+                                                    addTextToList( "Jestem na miejscu.");
+                                                    if(k==2)
+                                                    addTextToList( "Polecenie wykonane");
+                                                    if(k==3)
+                                                    addTextToList( "Dojechałem na wyznaczone miejsce");
                                                     gdzie=gdzie+1;
                                                 }
                                                 else
@@ -233,7 +294,17 @@ return img;
                                                     isOccupied =  checkIfIsOccupied(pAgent.x, pAgent.y + 1);
                                                     isObstacle =  checkIfIsObstacle(pAgent.x, pAgent.y + 1);
                                                     pAgent.y += 1;
+                                                    int n;
+                                                     n = 3;
+                                                     int k = losuj(n); 
+                                                    if(k==0)
                                                     addTextToList( "Dojechałem. Co dalej?");
+                                                    if(k==1)
+                                                    addTextToList( "Jestem na miejscu.");
+                                                    if(k==2)
+                                                    addTextToList( "Polecenie wykonane");
+                                                    if(k==3)
+                                                    addTextToList( "Dojechałem na wyznaczone miejsce");
                                                     gdzie=gdzie+1;
                                                 }
                                                 else
@@ -250,9 +321,53 @@ return img;
                                                  pozX=pAgent.x*40;
                                                  pozY=pAgent.y*40;
                                                  addTextToList( "Pomoc na miejscu. Co dalej?");
-                                               
+                                                 gdzie=gdzie+1;
                                                 break;
                                                 }
+                                            case 6:{
+                                                
+                                                 pAgent.y =1;
+                                                 pAgent.x =2;
+                                                 gdzie=gdzie+1;
+                                                 addTextToList( "Jestem na polu pierwszym.");
+                                                break;
+                                                }
+                                            case 7:{
+                                                pAgent.y =1;
+                                                 pAgent.x =8;
+                                                 gdzie=gdzie+1;
+                                                 addTextToList( "Jestem na polu drugim.");
+                                                break;
+                                                }
+                                            case 8:{
+                                                pAgent.y =4;
+                                                 pAgent.x =2;
+                                                 gdzie=gdzie+1;
+                                                 addTextToList( "Jestem na polu trzecim.");
+                                                break;
+                                                }
+                                            case 9:{
+                                                pAgent.y =4;
+                                                 pAgent.x =8;
+                                                 gdzie=gdzie+1;
+                                                 addTextToList( "Jestem na polu czwartym.");
+                                                break;
+                                                }
+                                            case 10:{
+                                                pAgent.y =7;
+                                                 pAgent.x =2;
+                                                 gdzie=gdzie+1;
+                                                 addTextToList( "Jestem na polu piątym.");
+                                                break;
+                                                }
+                                            case 11:{
+                                                pAgent.y =7;
+                                                 pAgent.x =8;
+                                                 gdzie=gdzie+1;
+                                                 addTextToList( "Jestem na polu szóstym.");
+                                                break;
+                                                }
+                                            
                                             
                                                    
                                                
@@ -272,6 +387,18 @@ return img;
                                             isObstacle = checkIfIsObstacle(tmpx, tmpy);
                                             pAgent.x = excmd[j].GetX();
                                             pAgent.y = excmd[j].GetY();
+                                            int n;
+                                                     n = 3;
+                                                     int k = losuj(n); 
+                                                    if(k==0)
+                                                    addTextToList( "Dojechałem. Co dalej?");
+                                                    if(k==1)
+                                                    addTextToList( "Jestem na miejscu.");
+                                                    if(k==2)
+                                                    addTextToList( "Polecenie wykonane");
+                                                    if(k==3)
+                                                    addTextToList( "Dojechałem na wyznaczone miejsce");
+                                            gdzie=gdzie+1;
                                         }
                                         else
                                         {
@@ -309,32 +436,28 @@ return img;
                             
                         }
                         if(gdzie==0)     
-                                              {
-                                addTextToList( "Nie wiem, gdzie mam jechać. ;(");
-                                        }
+                                {
+                                int n;
+                                                     n = 3;
+                                                     int k = losuj(n); 
+                                                    if(k==0){
+                                                    addTextToList("Wpisz np. jedz w górę");
+                                                    addTextToList("Nie wiem, gdzie mam jechać. ;(");
+                                                    }
+                                                    if(k==1){
+                                                        addTextToList("Spróbuj wpisać chociażby 'jedz 2 2' albo 'jedz gora'");
+                                                    addTextToList( "Chyba coś źle wpisałeś, bo zupełnie nie rozumiem polecenia.");
+                                                    }
+                                                    if(k==2){
+                                                    addTextToList( "nie czytam w myślach. :)");
+                                                    addTextToList( "Jestem prostym programem,");}
+                                                    if(k==3)
+                                                    addTextToList( "Nie rozumiem o co Ci chodzi");    
+                                
+                                }
                         break;
                     }
-                    
-                    
-                   
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+
                     case 2: //oranie
                     {
                         int gdzie=0;
@@ -368,6 +491,7 @@ return img;
                         }
                              if(ilek>0)
                             {
+                                
                             addTextToList("Na polu są przeszkody! USUŃ JE");
                             addTextToList("ilość przeszkód: "+ilek);
                             }
@@ -638,72 +762,80 @@ return img;
                                         }}}}
                         if(gdzie==0)
                         {
+                            int n;
+                                                     n = 3;
+                                                     int k = losuj(n); 
+                                                    if(k==0)                        
                         addTextToList("Nie wiem co zaorać. :(");
+                                                    if(k==1)                        
+                        addTextToList("Co mam orać?");
+                                                    if(k==2)                        
+                        addTextToList("Chyba o czymś zapomniałeś.");
+                                                    if(k==3)                        
+                        addTextToList("Nie umiem czytać Ci w myślach. Precyzyjniej proszę!!!");
                         }
                                                                       break;
                                                                         }
                     
                     case 10:
                     {
-                        if (board.CheckPool(pAgent.x-1, pAgent.y,false))
+                        
+                        
+                        int kamien=0;
+                        if(pAgent.y==board.width-11)
                         {
-                            ObjectPackage obj = (ObjectPackage)board.GetObject(pAgent.x, pAgent.y, false);
-                            agent.AddPackage(obj);
-                            board.DeleteObject(pAgent.x-1, pAgent.y, false);
-                           addTextToList( "Usunięto przeszkodę");
-                        }
-                        else if (board.CheckPool(pAgent.x+1, pAgent.y,false))
-                        {
-                            ObjectPackage obj = (ObjectPackage)board.GetObject(pAgent.x, pAgent.y, false);
-                            agent.AddPackage(obj);
-                            board.DeleteObject(pAgent.x+1, pAgent.y, false);
-                           
-                        }
-                        else if (board.CheckPool(pAgent.x, pAgent.y+1,false))
-                        {
-                            ObjectPackage obj = (ObjectPackage)board.GetObject(pAgent.x, pAgent.y, false);
-                            agent.AddPackage(obj);
-                            board.DeleteObject(pAgent.x, pAgent.y+1, false);
-                           
-                        }
-                        else if (board.CheckPool(pAgent.x, pAgent.y-1,false))
-                        {
-                            ObjectPackage obj = (ObjectPackage)board.GetObject(pAgent.x, pAgent.y, false);
-                            agent.AddPackage(obj);
-                            board.DeleteObject(pAgent.x, pAgent.y-1, false);
-                           
-                        }
-                        else if (board.CheckPool(pAgent.x+1, pAgent.y+1,false))
-                        {
-                            ObjectPackage obj = (ObjectPackage)board.GetObject(pAgent.x, pAgent.y, false);
-                            agent.AddPackage(obj);
-                            board.DeleteObject(pAgent.x+1, pAgent.y+1, false);
-                           
-                        }
-                        else if (board.CheckPool(pAgent.x-1, pAgent.y+1,false))
-                        {
-                            ObjectPackage obj = (ObjectPackage)board.GetObject(pAgent.x, pAgent.y, false);
-                            agent.AddPackage(obj);
-                            board.DeleteObject(pAgent.x-1, pAgent.y+1, false);
-                           
-                        }
-                        else if (board.CheckPool(pAgent.x+1, pAgent.y-1,false))
-                        {
-                            ObjectPackage obj = (ObjectPackage)board.GetObject(pAgent.x, pAgent.y, false);
-                            agent.AddPackage(obj);
-                            board.DeleteObject(pAgent.x+1, pAgent.y-1, false);
-                           
-                        }
-                        else if (board.CheckPool(pAgent.x-1, pAgent.y-1,false))
-                        {
-                            ObjectPackage obj = (ObjectPackage)board.GetObject(pAgent.x, pAgent.y, false);
-                            agent.AddPackage(obj);
-                            board.DeleteObject(pAgent.x-1, pAgent.y-1, false);
+                                              
+                        addTextToList("GRANICA!!!");
+                      
                         }
                         else{
-                        addTextToList( "Brak przeszkody w pobliżu");
+                       isObstacle =  checkIfIsObstacle(pAgent.x-1, pAgent.y);
+                        if(isObstacle)
+                        {
+                            kamien=kamien+1;
+                            board.DeleteObject(pAgent.x-1, pAgent.y, false);
+                            int n;
+                                                     n = 3;
+                                                     int k = losuj(n); 
+                                                    if(k==0)     
+                            addTextToList("Usunięto przeszkodę.");
+                                                    if(k==1)     
+                            addTextToList("Zadanie wykonano.");
+                                                    if(k==2)     
+                            addTextToList("Usunięta.");
+                                                    if(k==3)     
+                            addTextToList("Kamień usunięty.");
+                           
                         }
-                  
+                        }
+                         if(pAgent.x==1 && pAgent.y==9)
+                        {
+                            int n;
+                                                     n = 2;
+                                                     int k = losuj(n); 
+                                                    if(k==0)          
+                        addTextToList("Nie będę usuwać hangaru!!!");
+                                                    if(k==1)          
+                        addTextToList("Widzisz tu jakiś kamień?");
+                                                    if(k==2)          
+                        addTextToList("nawet nie będę próbował usuwać hangaru.");
+                        kamien=kamien+1;
+                        }
+                        
+                        if(kamien==0){
+                            int n;
+                                                     n = 3;
+                                                     int k = losuj(n); 
+                                                    if(k==0)  
+                        addTextToList("Nie widzę przede mną żadnej przeszkody. A Ty widzisz?");  
+                                                    if(k==1)  
+                        addTextToList("Brak przeszkody");   
+                                                    if(k==2)  
+                        addTextToList("Czytałeś w ogóle moją dokumentację?"); 
+                                                    if(k==3)  
+                        addTextToList("Nie widzę nic do usunięcia."); 
+                        }
+                        kamien=0;
                         
                         
                         
@@ -751,16 +883,23 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
-                           
+                            ilek=ilek+1; 
                         }
                         else{
                       
                         
                         board.SetObject(a, b, false, op1);
+                        
                         }
+                            
+                            
                             }
+                            
                         }
+                          addTextToList("Posiałem pszenicę na polu pierwszym.");
+                          if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
@@ -769,7 +908,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1; 
                            
                         }
                         else{
@@ -779,6 +918,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Posiałem pszenicę na polu drugim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -787,7 +930,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1; 
                            
                         }
                         else{
@@ -797,6 +940,10 @@ return img;
                         }
                             }
                         }
+                            addTextToList("Posiałem pszenicę na polu trzecim.");
+                            if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -805,7 +952,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1; 
                            
                         }
                         else{
@@ -815,6 +962,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Posiałem pszenicę na polu czwartym.");
+                           if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -823,7 +974,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1; 
                            
                         }
                         else{
@@ -833,6 +984,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Posiałem pszenicę na polu piątym.");
+                          if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -841,7 +996,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                           ilek=ilek+1; 
                            
                         }
                         else{
@@ -851,11 +1006,15 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Posiałem pszenicę na polu szóstym. Wyczuwam dobry zysk.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          }
                          else
                          {
-                            addTextToList("Pole musi zostać najpierw zaorane");      
+                            ilek=ilek+1;       
                          }}
                       break;
                                                                         }
@@ -881,7 +1040,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                           ilek=ilek+1; 
                            
                         }
                         else{
@@ -890,7 +1049,10 @@ return img;
                         board.SetObject(a, b, false, op1);
                         }
                             }
-                        }
+                        }addTextToList("Posiałem bataty na polu pierszym. Wyczuwam dobry zysk.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
@@ -899,7 +1061,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1; 
                            
                         }
                         else{
@@ -909,6 +1071,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Posiałem bataty na polu drugim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -917,7 +1083,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1; 
                            
                         }
                         else{
@@ -927,6 +1093,10 @@ return img;
                         }
                             }
                         }
+                            addTextToList("Posiałem bataty na polu trzecim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -935,7 +1105,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1; 
                            
                         }
                         else{
@@ -945,6 +1115,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Posiałem bataty na polu czwartym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -953,7 +1127,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1; 
                            
                         }
                         else{
@@ -963,6 +1137,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Posiałem bataty na polu piątym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -971,7 +1149,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1; 
                            
                         }
                         else{
@@ -981,6 +1159,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Posiałem bataty na polu szóstym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          }
                          else
@@ -1011,7 +1193,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1021,6 +1203,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Posiałem herbatę na polu pierwszym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
@@ -1029,7 +1215,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1039,6 +1225,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Posiałem herbatę na polu drugim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -1047,7 +1237,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1057,6 +1247,10 @@ return img;
                         }
                             }
                         }
+                            addTextToList("Posiałem herbatę na polu trzecim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -1065,7 +1259,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1075,6 +1269,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Posiałem herbatę na polu czwartym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -1083,7 +1281,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList(  "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1093,6 +1291,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Posiałem herbatę na polu piątym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -1101,7 +1303,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1111,6 +1313,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Posiałem herbatę na polu szóstym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          }
                          else
@@ -1141,7 +1347,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1151,6 +1357,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Posiałem kawę na polu pierwszym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
@@ -1159,7 +1369,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1169,6 +1379,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Posiałem kawę na polu drugim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -1177,7 +1391,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1187,6 +1401,10 @@ return img;
                         }
                             }
                         }
+                            addTextToList("Posiałem kawę na polu trzecim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -1195,7 +1413,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1205,6 +1423,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Posiałem kawę na polu czwartym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -1213,7 +1435,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1223,6 +1445,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Posiałem kawę na polu piątym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -1231,7 +1457,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1241,6 +1467,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Posiałem kawę na polu szóstym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          }
                          else
@@ -1271,7 +1501,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1281,6 +1511,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Posiałem oliwki na polu pierwszym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
@@ -1289,7 +1523,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1299,6 +1533,11 @@ return img;
                         }
                             }
                         }
+                             
+                             addTextToList("Posiałem oliwki na polu drugim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -1307,7 +1546,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1317,6 +1556,10 @@ return img;
                         }
                             }
                         }
+                            addTextToList("Posiałem oliwki na polu trzecim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -1325,7 +1568,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1335,6 +1578,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Posiałem oliwki na polu czwartym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -1343,7 +1590,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1353,6 +1600,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Posiałem oliwki na polu piątym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -1361,7 +1612,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1371,6 +1622,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Posiałem oliwki na polu szóstym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          }
                          else
@@ -1401,7 +1656,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1411,6 +1666,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Posiałem jęczmień na polu pierwszym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
@@ -1419,7 +1678,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1429,6 +1688,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Posiałem jęczmień na polu drugim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -1437,7 +1700,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1447,6 +1710,10 @@ return img;
                         }
                             }
                         }
+                            addTextToList("Posiałem jęczmień na polu trzecim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -1455,7 +1722,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1465,6 +1732,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Posiałem jęczmień na polu czwartym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -1473,7 +1744,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1483,6 +1754,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Posiałem jęczmień na polu piątym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -1491,7 +1766,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1501,6 +1776,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Posiałem jęczmień na polu szóstym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          }
                          else
@@ -1532,7 +1811,7 @@ return img;
                                                                         }
                     case 4: //zbieranie
                     {   
-                        
+                        int ilek = 0;
                         isRoute = checkIfIsRoute(pAgent.x, pAgent.y);
                         if(isRoute)
                         {
@@ -1551,7 +1830,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1570,7 +1849,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1588,7 +1867,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1606,7 +1885,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1624,7 +1903,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1642,7 +1921,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1653,9 +1932,11 @@ return img;
                             }
                         }
                          }
+                            int a=100;
                             
-                            Zasoby.z.ModyfikujZb1(100);
-                            addTextToList("Zebrano 100kg pszenicy");
+                          
+                            addTextToList("Zebrano 100kg - ilość przeszkód("+ilek+") * 10 co daje nam: " +(a-ilek*10)+ "kg pszenicy");
+                            Zasoby.z.ModyfikujZb1(a-ilek*10);
                             addTextToList("Aktualny stan: "+ Zasoby.z.GetZb1() + "kg");
                          }
                         
@@ -1670,7 +1951,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1689,7 +1970,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1707,7 +1988,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1725,7 +2006,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1761,7 +2042,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1772,9 +2053,14 @@ return img;
                             }
                         }
                          }
-                            Zasoby.z.ModyfikujZb2(230);
-                            addTextToList("Zebrano 230kg batatów");
-                            addTextToList("Aktualny stan to: " + Zasoby.z.GetZb2() + "kg");
+                            
+                            
+                            int a=230;
+                            
+                          
+                            addTextToList("Zebrano 230kg - ilość przeszkód("+ilek+") * 10 co daje nam: " +(a-ilek*10)+ "kg batatów");
+                            Zasoby.z.ModyfikujZb2(a-ilek*10);
+                            addTextToList("Aktualny stan: "+ Zasoby.z.GetZb2() + "kg");
                             
                          }
                         
@@ -1791,7 +2077,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1810,7 +2096,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1846,7 +2132,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1864,7 +2150,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1882,7 +2168,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1893,9 +2179,14 @@ return img;
                             }
                         }
                          }
-                            Zasoby.z.ModyfikujZb3(60);
-                            addTextToList("Zebrano 60kg herbaty");
-                            addTextToList("Aktualny stan to: " + Zasoby.z.GetZb3() + "kg");
+                            
+                            
+                            int a=60;
+                            
+                          
+                            addTextToList("Zebrano 60kg - ilość przeszkód("+ilek+") * 5 co daje nam: " +(a-ilek*5)+ "kg herbaty");
+                            Zasoby.z.ModyfikujZb6(a-ilek*5);
+                            addTextToList("Aktualny stan: "+ Zasoby.z.GetZb6() + "kg");
                          }
                         
                         
@@ -1910,7 +2201,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1929,7 +2220,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1947,7 +2238,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1965,7 +2256,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -1983,7 +2274,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2001,7 +2292,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2012,9 +2303,14 @@ return img;
                             }
                         }
                          }
-                            Zasoby.z.ModyfikujZb4(140);
-                            addTextToList("Zebrano 140kg jęczmienia");
-                            addTextToList("Aktualny stan to: " + Zasoby.z.GetZb4() + "kg");
+                            
+                            
+                             int a=140;
+                            
+                          
+                            addTextToList("Zebrano 140kg - ilość przeszkód("+ilek+") * 10 co daje nam: " +(a-ilek*10)+ "kg jęczmienia");
+                            Zasoby.z.ModyfikujZb4(a-ilek*10);
+                            addTextToList("Aktualny stan: "+ Zasoby.z.GetZb4() + "kg");
                          }
                         
                         
@@ -2029,7 +2325,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2048,7 +2344,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2066,7 +2362,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2084,7 +2380,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2102,7 +2398,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2120,7 +2416,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2131,9 +2427,14 @@ return img;
                             }
                         }
                          }
-                            Zasoby.z.ModyfikujZb5(200);
-                            addTextToList( "Zebrano 200kg kawy");
-                            addTextToList("Aktualny stan to: " + Zasoby.z.GetZb5() + "kg");
+                            
+                            
+                            int a=200;
+                            
+                          
+                            addTextToList("Zebrano 200kg - ilość przeszkód("+ilek+") * 15 co daje nam: " +(a-ilek*15)+ "kg kawy");
+                            Zasoby.z.ModyfikujZb5(a-ilek*15);
+                            addTextToList("Aktualny stan: "+ Zasoby.z.GetZb5() + "kg");
                          }
                         
                         else if(checkIfIsWaterOliwki(pAgent.x, pAgent.y))
@@ -2147,7 +2448,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2166,7 +2467,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2184,7 +2485,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2202,7 +2503,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2220,7 +2521,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2238,7 +2539,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2249,14 +2550,16 @@ return img;
                             }
                         }
                          }
-                            Zasoby.z.ModyfikujZb6(123);
-                            addTextToList("Zebrano 123kg oliwek");
-                            addTextToList("Aktualny stan to: " + Zasoby.z.GetZb6() + "kg");
+                            
+                            int a=123;
+                            addTextToList("Zebrano 123kg - ilość przeszkód("+ilek+") * 12 co daje nam: " +(a-ilek*12)+ "kg kawy");
+                            Zasoby.z.ModyfikujZb3(a-ilek*12);
+                            addTextToList("Aktualny stan: "+ Zasoby.z.GetZb3() + "kg");
                          }
                         
                          else
                          {
-                            addTextToList("Pole musi zostać najpierw zaorane");      
+                            addTextToList("Pole musi zostać najpierw zaorane, posiane i podlane");      
                          }}
                         
                         
@@ -2287,10 +2590,12 @@ return img;
                     
                     
                     
+                             
                     
                     
                     case 5: //podlewanie
                     {   
+                        int ilek=0;
                         isRoute = checkIfIsRoute(pAgent.x, pAgent.y);
                         if(isRoute)
                         {
@@ -2308,7 +2613,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2318,6 +2623,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Podlałem pszenicę na polu pierwszym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
@@ -2326,7 +2635,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2336,6 +2645,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Podlałem pszenicę na polu drugim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -2344,7 +2657,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2353,7 +2666,10 @@ return img;
                         board.SetObject(a, b, false, op1);
                         }
                             }
-                        }
+                        }addTextToList("Podlałem pszenicę na polu trzecim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -2362,7 +2678,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2372,6 +2688,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Podlałem pszenicę na polu czwartym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -2380,7 +2700,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2390,6 +2710,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Podlałem pszenicę na polu piątym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -2398,7 +2722,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2408,6 +2732,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Podlałem pszenicę na polu szóstym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          }
                         
@@ -2422,7 +2750,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2432,6 +2760,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Podlałem bataty na polu pierwszym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
@@ -2440,7 +2772,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2450,6 +2782,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Podlałem bataty na polu drugim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -2458,7 +2794,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2468,6 +2804,10 @@ return img;
                         }
                             }
                         }
+                            addTextToList("Podlałem bataty na polu trzecim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -2476,7 +2816,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2486,6 +2826,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Podlałem bataty na polu czwartym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -2494,7 +2838,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2504,6 +2848,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Podlałem bataty na polu piątym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -2512,7 +2860,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2522,6 +2870,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Podlałem bataty na polu szóstym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          }
                         
@@ -2538,7 +2890,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2547,7 +2899,11 @@ return img;
                         board.SetObject(a, b, false, op1);
                         }
                             }
-                        }
+                        }addTextToList("Podlałem herbatę na polu pierwszym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
+                          
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
@@ -2556,7 +2912,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2566,6 +2922,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Podlałem herbatę na polu drugim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -2574,7 +2934,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2584,6 +2944,10 @@ return img;
                         }
                             }
                         }
+                            addTextToList("Podlałem herbatę na polu trzecim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -2592,7 +2956,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2602,6 +2966,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Podlałem herbatę na polu czwartym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -2610,7 +2978,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2620,6 +2988,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Podlałem herbatę na polu piątym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -2628,7 +3000,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2639,6 +3011,10 @@ return img;
                             }
                         }
                          }
+                             addTextToList("Podlałem herbatę na polu szóstym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                         
                         
@@ -2653,7 +3029,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                             ilek=ilek+1;
                            
                         }
                         else{
@@ -2663,6 +3039,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Podlałem jęczmień na polu pierwszym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
@@ -2671,7 +3051,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                             ilek=ilek+1;
                            
                         }
                         else{
@@ -2681,6 +3061,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Podlałem jęczmień na polu drugim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -2689,7 +3073,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                             ilek=ilek+1;
                            
                         }
                         else{
@@ -2699,6 +3083,10 @@ return img;
                         }
                             }
                         }
+                            addTextToList("Podlałem jęczmień na polu trzecim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -2707,7 +3095,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                             ilek=ilek+1;
                            
                         }
                         else{
@@ -2717,6 +3105,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Podlałem jęczmień na polu czwartym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -2725,7 +3117,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                             ilek=ilek+1;
                            
                         }
                         else{
@@ -2735,6 +3127,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Podlałem jęczmień na polu piątym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -2743,7 +3139,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2753,6 +3149,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Podlałem jęczmień na polu szóstym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          }
                         
@@ -2771,7 +3171,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2781,6 +3181,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Podlałem oliwki na polu pierwszym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
@@ -2789,7 +3193,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2799,6 +3203,10 @@ return img;
                         }
                             }
                         }
+                              addTextToList("Podlałem oliwki na polu drugim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -2807,7 +3215,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2817,6 +3225,10 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Podlałem oliwki na polu trzecim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -2825,7 +3237,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2835,6 +3247,10 @@ return img;
                         }
                             }
                         }
+                            addTextToList("Podlałem oliwki na polu czwartym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -2843,7 +3259,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2853,6 +3269,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Podlałem oliwki na polu piątym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -2861,7 +3281,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2871,6 +3291,10 @@ return img;
                         }
                             }
                         }
+                              addTextToList("Podlałem oliwki na polu szóstym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          }
                         
@@ -2884,7 +3308,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2894,6 +3318,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Podlałem kawę na polu pierwszym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                              else if((pAgent.x>=6 && pAgent.x<=10) && (pAgent.y>=0 && pAgent.y<=2)){
                             
@@ -2902,7 +3330,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2912,6 +3340,10 @@ return img;
                         }
                             }
                         }
+                              addTextToList("Podlałem kawę na polu drugim.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                         else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -2920,7 +3352,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2930,6 +3362,10 @@ return img;
                         }
                             }
                         }
+                            addTextToList("Podlałem kawę na polu trzecim.");
+                            if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=3 && pAgent.y<=5){
                             
@@ -2938,7 +3374,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList( "Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2948,6 +3384,10 @@ return img;
                         }
                             }
                         }
+                           addTextToList("Podlałem kawę na polu czwartym.");
+                           if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=0 && pAgent.x<=4 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -2956,7 +3396,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2966,6 +3406,10 @@ return img;
                         }
                             }
                         }
+                          addTextToList("Podlałem kawę na polu piątym.");
+                          if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          else if(pAgent.x>=6 && pAgent.x<=10 && pAgent.y>=6 && pAgent.y<=8){
                             
@@ -2974,7 +3418,7 @@ return img;
                             isObstacle =  checkIfIsObstacle(a, b);
                             if(isObstacle)
                         {
-                            addTextToList("Na polu są przeszkody! USUŃ JE");
+                            ilek=ilek+1;
                            
                         }
                         else{
@@ -2984,22 +3428,12 @@ return img;
                         }
                             }
                         }
+                             addTextToList("Podlałem kawę na polu szóstym.");
+                             if(ilek!=0){
+                          addTextToList("Jeśli je usuniesz automatycznie posieję i podleję puste pole bez potrzeby ponownego orania");
+                            addTextToList("Na polu nadal są przeszkody. Aktualna ilość przeszkód: "+ilek);}
                          }
                          }
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
                          else
                          {
                             addTextToList("Pole musi zostać najpierw zaorane");      
@@ -3035,27 +3469,34 @@ return img;
                     case 11:
                     {
                         if (Ulepszenia.u.SwiatlaStan() == true) { addTextToList("Swiatla były już włączone");} else
-                        { Ulepszenia.u.SwiatlaSwitch("on"); addTextToList("Wlaczylem swiatla. Rozpoczęto pobór enrgii elektrycznej"); }
+                        { Ulepszenia.u.SwiatlaSwitch("on"); addTextToList("Wlaczylem swiatla. Rozpoczęto pobór enrgii elektrycznej"); 
+                        
+                        }
                         break;
                     }
                     
                     case 12:
                     {
                         if (Ulepszenia.u.SwiatlaStan() == false) { addTextToList("Swiatla były już wyłączone");} else
-                        { Ulepszenia.u.SwiatlaSwitch("off"); addTextToList("Wyłączyłem światła"); }
+                        { Ulepszenia.u.SwiatlaSwitch("off"); addTextToList("Wyłączyłem światła"); 
+                        
+                        }
                         break;
                     }
                         
                     case 13:
                     {
-                        addTextToList("Możesz skorzystać z rozmaitych komend: ");
-                        addTextToList("    - oraj [numer pola] / wszystko");
-                        addTextToList("    - wlacz/wylacz swiatla");
-                        addTextToList("    - zbierz/posiej/podlej");
-                        addTextToList("    - gdzie jestes");
-                        addTextToList("    - przesun/pojedz");
-                        addTextToList("    - i inne...");
                         
+                        addTextToList("    - i inne...");
+                        addTextToList("    - oraj [numer pola slownie] / [wszystko]");
+                        addTextToList("    - wlacz/wylacz swiatla");
+                        addTextToList("    - zbierz/posiej/podlej będac na danym polu");
+                        addTextToList("      gdzie znajduje sie trakor");
+                        addTextToList("    - gdzie jestes? - zwraca info");
+                        addTextToList("      /[prawo] - porusza traktorem.");
+                        addTextToList("    - przesun/pojedz [gora]/[dol]/[lewo]");
+                        
+                        addTextToList("Możesz skorzystać z rozmaitych komend: ");
                         break;
                     }
                         
@@ -3101,7 +3542,7 @@ return img;
                     }
                     case 19:
                     {
-                        addTextToList("Aktualny pogoda to " + Informations.getStringPogoda());
+                        addTextToList("Aktualna pogoda to " + GameFrame.gf.aktpog);
                         break;
                     }
                     case 20:
@@ -3114,7 +3555,198 @@ return img;
                         addTextToList("Aktualny stan konta to: " + Zasoby.z.GetStanKontaString());
                         break;
                     }
-                     case 8:
+                    case 22:
+                    {
+                        int maks;
+                        maks = Ulepszenia.u.getLvlPP();
+                        if(maks < 5){
+                        addTextToList("Koszt ulepszenia w wysokości "+ Ulepszenia.u.getPPCenaString() + " pobrano z konta.");
+                        Ulepszenia.u.CapacityPack1();
+                        Ulepszenia.u.ppcena();
+                        Ulepszenia.u.lvlPP();
+                        addTextToList("Osiągnieto poziom " + Ulepszenia.u.getLvlPPstring()+"/5");
+                        
+                        double wzrost = 500.0*Ulepszenia.u.getLvlPP();
+                        String wzrostString = Double.toString(wzrost);
+                        addTextToList("Pojemność wzrosła o " + wzrostString + "kg");
+                        Zasoby.z.CapacityPackLevelUp((500.0*Ulepszenia.u.getLvlPP()));
+                        }else
+                        {
+                        addTextToList("Nie można już zwiększyć!");
+                        } 
+                        break;
+                    }
+                    case 24:
+                    {
+                        
+        int n;
+        n = 5;
+        int k = losuj(n); 
+        if(k==0)
+        addTextToList("A nic ciekawego.");    
+        if(k==1)
+        addTextToList("Stoję tu i się nudzę.");
+        if(k==2)
+        addTextToList("Stoję tu i się nudzę.");
+        if(k==3)
+        addTextToList("Właśnie przeglądam internet. Ceny bataty poszły w górę. :(");
+        if(k==4)
+        addTextToList("Podziwiam właśnie moje piękne pola.");
+        if(k==5)
+        addTextToList("No właśnie nic! Może weźmiemy się do roboty?");
+        
+        
+                        break;
+                    }
+                        
+                        
+                        case 26:
+                    {
+                        
+        int n;
+        n = 5;
+        int k = losuj(n); 
+        if(k==0)
+        addTextToList("Hej, co tam?");    
+        if(k==1)
+        addTextToList("Siema!");
+        if(k==2)
+        addTextToList("Witaj");
+        if(k==3)
+        addTextToList("Czesc czołem kluski z rosołem");
+        if(k==4)
+        addTextToList("Hej, Podziwiam właśnie moje piękne pola.");
+        if(k==5)
+        addTextToList("Cześć! Może weźmiemy się do roboty?");
+        
+        
+                        break;
+                    }
+                        
+                        
+                    case 25:
+                    {
+                        
+                    addTextToList("moją pracę, nie wspominając o burzy...");   
+                    addTextToList("mnie spowalnia, ale śnieg, wiatr i mgła znacznie utrudniają"); 
+                    addTextToList("Przy słońcu prędkość jest bez zmian, deszcz delikatnie,");
+                    addTextToList("dzięki temu znacznie poprawia mi sie prędkość.");
+                    addTextToList("przy włączonych światłach poprawia mi się widoczność,");
+                    addTextToList("Pilnuj pogody, gdyż im gorsze warunki tym jestem wolniejszy,");
+                    
+                break;}
+        
+                    case 23: 
+                    {
+//                       addTextToList("  - wszystkie: zasóball");
+//                                addTextToList("  - herbata: zasób6");
+//                                addTextToList("  - kawa: zasóbb5");
+//                                addTextToList("  - jęczmień: zasób4");
+//                                addTextToList("  - oliwki: zasób3");
+//                                addTextToList("  - bataty: zasób2");
+//                                addTextToList("  - pszenica: zasób1");
+//                                addTextToList("Aby sprzedać zasób podaj przypisaną mu nazwe:");       
+                        int ilek=0;
+                        for (int j = 0; j < excmd.length; j++) {
+                                
+                                if (!excmd[j].argCus) {
+                                    int mainNo = excmd[j].cmd.GetNo();
+
+                                    if (mainNo == no) {
+                                        int argNo = excmd[j].cmd.GetNoArg();
+                                        
+                                        switch (argNo){
+                                        case 1: 
+                                        {   
+                                            int masa = Zasoby.z.GetZb1();
+                                            masa = masa*25;
+                                            addTextToList("Zarobiłeś " + masa + "€");
+                                            addTextToList( "Sprzedałeś " + Zasoby.z.GetZb1() + "kg pszenicy.");
+                                            addTextToList( "sprzedajesz cały zbiór 1");
+                                            Zasoby.z.ModyfikujZb1(-Zasoby.z.GetZb1());
+                                            Zasoby.z.ModyfikujStanKonta(masa);
+//                       
+                                            break;
+                                        }
+                                        case 2: 
+                                        {
+                                            int masa = Zasoby.z.GetZb2();
+                                            masa = masa*40;
+                                            addTextToList("Zarobiłeś " + masa + "€");
+                                            addTextToList( "Sprzedałeś " + Zasoby.z.GetZb2() + "kg batatów.");
+                                            addTextToList( "sprzedajesz cały zbiór 2");
+                                            Zasoby.z.ModyfikujZb2(-Zasoby.z.GetZb2());
+                                            Zasoby.z.ModyfikujStanKonta(masa);
+                                            break;
+                                        }
+                                        case 3: 
+                                        {
+                                            int masa = Zasoby.z.GetZb3();
+                                            masa = masa*50;
+                                            addTextToList("Zarobiłeś " + masa + "€");
+                                            addTextToList( "Sprzedałeś " + Zasoby.z.GetZb3() + "kg oliwek.");
+                                            addTextToList( "sprzedajesz cały zbiór 3");
+                                            Zasoby.z.ModyfikujZb3(-Zasoby.z.GetZb3());
+                                            Zasoby.z.ModyfikujStanKonta(masa);
+                                            break;
+                                        }
+                                        case 4: 
+                                        {
+                                            int masa = Zasoby.z.GetZb4();
+                                            masa = masa*10;
+                                            addTextToList("Zarobiłeś " + masa + "€");
+                                            addTextToList( "Sprzedałeś " + Zasoby.z.GetZb4() + "kg jęczmienia.");
+                                            addTextToList( "sprzedajesz cały zbiór 4");
+                                            Zasoby.z.ModyfikujZb4(-Zasoby.z.GetZb4());
+                                            Zasoby.z.ModyfikujStanKonta(masa);
+                                            break;
+                                        }
+                                        case 5: 
+                                        {
+                                            int masa = Zasoby.z.GetZb5();
+                                            masa = masa*15;
+                                            addTextToList("Zarobiłeś " + masa + "€");
+                                            addTextToList( "Sprzedałeś " + Zasoby.z.GetZb5() + "kg kawy.");
+                                            addTextToList( "sprzedajesz cały zbiór 5");
+                                            Zasoby.z.ModyfikujZb5(-Zasoby.z.GetZb5());
+                                            Zasoby.z.ModyfikujStanKonta(masa);
+                                            break;
+                                        }
+                                        case 6: 
+                                        {
+                                            int masa = Zasoby.z.GetZb6();
+                                            masa = masa*5;
+                                            addTextToList("Zarobiłeś " + masa + "€");
+                                            addTextToList( "Sprzedałeś " + Zasoby.z.GetZb6() + "kg herbaty.");
+                                            addTextToList( "sprzedajesz cały zbiór 6");
+                                            Zasoby.z.ModyfikujZb6(-Zasoby.z.GetZb6());
+                                            Zasoby.z.ModyfikujStanKonta(masa);
+                                            break;
+                                        }
+                                        case 7: 
+                                        {
+                                            int masa = Zasoby.z.GetZb1()+Zasoby.z.GetZb2()+Zasoby.z.GetZb3()+Zasoby.z.GetZb4()+Zasoby.z.GetZb5()+Zasoby.z.GetZb6();
+                                            int cena = Zasoby.z.GetZb1()*25+Zasoby.z.GetZb2()*40+Zasoby.z.GetZb3()*50+Zasoby.z.GetZb4()*10+Zasoby.z.GetZb5()*15+Zasoby.z.GetZb6()*5;
+                                            addTextToList("Zarobiłeś " + cena + "€");
+                                            addTextToList("Razem " + masa+"kg");
+                                            addTextToList( Zasoby.z.GetZb5() + "kg kawy,"+ Zasoby.z.GetZb6() + "kg herbaty.");
+                                            addTextToList( Zasoby.z.GetZb3() + "kg jęczmienia,"+ Zasoby.z.GetZb4() + "kg oliwek,");
+                                            addTextToList( "Sprzedałeś " + Zasoby.z.GetZb1() + "kg pszenicy,"+ Zasoby.z.GetZb2() + "kg batatów,");
+                                            addTextToList( "sprzedajesz wszystko");
+                                            Zasoby.z.ModyfikujZb1(-Zasoby.z.GetZb1());
+                                            Zasoby.z.ModyfikujZb2(-Zasoby.z.GetZb2());
+                                            Zasoby.z.ModyfikujZb3(-Zasoby.z.GetZb3());
+                                            Zasoby.z.ModyfikujZb4(-Zasoby.z.GetZb4());
+                                            Zasoby.z.ModyfikujZb5(-Zasoby.z.GetZb5());
+                                            Zasoby.z.ModyfikujZb6(-Zasoby.z.GetZb6());
+                                            Zasoby.z.ModyfikujStanKonta(cena);
+                                            break;
+                                        }
+                                        }}}}
+                        break;
+                    }
+                     
+                    case 8:
                     {
                      
                        
@@ -3559,7 +4191,7 @@ return img;
                     
                     g.drawImage(getSprite("tlo21.png"), i*scaleX, j*scaleY,this);    
                         
-                    g.drawImage(getSprite("track.png"), i*scaleX-2, j*scaleY-2,this);
+                    g.drawImage(getSprite("track.png"), i*scaleX+2, j*scaleY+2,this);
                     
                     g.drawImage(getSprite("techn.png"), pozX, pozY,this);
                         

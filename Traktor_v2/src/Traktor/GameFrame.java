@@ -15,10 +15,10 @@ import javax.swing.ListModel;
 import javax.swing.Timer;
 
 public class GameFrame extends java.awt.Frame {
-
+    static GameFrame gf = new GameFrame();
     DefaultListModel dlm;
     int zasoby;
-    
+    String aktpog;
     
     
     public String getStringPogoda() {
@@ -52,14 +52,7 @@ public class GameFrame extends java.awt.Frame {
         }
         return pogoda;
     }
-    
-    public void getHelp(){
-        dlm.add(0,"jedź - ");
-        dlm.add(1,"oraj - ");
-        dlm.add(2,"siej - ");
-        dlm.add(3,"zbieraj - ");
-    }
- 
+  
     public GameFrame() {        
         initComponents();
        
@@ -103,9 +96,10 @@ public class GameFrame extends java.awt.Frame {
        public void run(){
             
                 try {
-                    
                     while(true){    
-                    jLabel10.setText(getStringPogoda());
+                    aktpog = getStringPogoda();
+                    jLabel10.setText(aktpog);
+                    dlm.add(0,"Zmiana pogody, aktualna pogoda to " + aktpog);
                     Thread.sleep(60000);
                     
                     }
@@ -162,7 +156,6 @@ public class GameFrame extends java.awt.Frame {
         jProgressBar2 = new javax.swing.JProgressBar();
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -241,19 +234,19 @@ public class GameFrame extends java.awt.Frame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/newpackage/weathericons/noc.png"))); // NOI18N
         jLabel7.setMaximumSize(new java.awt.Dimension(50, 50));
         jLabel7.setMinimumSize(new java.awt.Dimension(50, 50));
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, -1));
 
         jLabel8.setText(MechanizmCzasu.GetPoraDnia());
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, -1, -1));
 
         jLabel9.setText(MechanizmCzasu.GetCzas());
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, -1, -1));
 
         jLabel10.setText(getStringPogoda());
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, -1, -1));
 
         jLabel13.setText(MechanizmCzasu.GetDzienNoc());
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
 
         jButtonZbiory.setText("Zbiory");
         jButtonZbiory.addActionListener(new java.awt.event.ActionListener() {
@@ -261,7 +254,7 @@ public class GameFrame extends java.awt.Frame {
                 jButtonZbioryActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonZbiory, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, -1, 30));
+        jPanel1.add(jButtonZbiory, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, -1, 30));
 
         jButton1.setText("Sklep z ulepszeniami");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -269,19 +262,19 @@ public class GameFrame extends java.awt.Frame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 160, 30));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 160, 30));
 
         jLabel3.setText("Stan konta:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText(Zasoby.z.GetStanKontaString());
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 57, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 57, -1));
 
         jPanel3.setBackground(jPanel1.getBackground());
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Zasoby");
+        jLabel6.setText("Stan magazynu");
 
         jProgressBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jProgressBar1.setMaximumSize(new java.awt.Dimension(20, 14));
@@ -332,14 +325,6 @@ public class GameFrame extends java.awt.Frame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 200, 90));
 
-        jButton2.setText("Zasoby");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 80, 30));
-
         add(jPanel1, java.awt.BorderLayout.NORTH);
 
         pack();
@@ -382,10 +367,6 @@ public class GameFrame extends java.awt.Frame {
         }
     }//GEN-LAST:event_commandText_KeyPressed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new FrameZasoby().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void addTextToList(String text)
     {
         dlm.add(0,"Operator: " + text);
@@ -411,7 +392,6 @@ public class GameFrame extends java.awt.Frame {
     private javax.swing.JTextField commandText;
     private Traktor.GamePanel gamePanel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonZbiory;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
